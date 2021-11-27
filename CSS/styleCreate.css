@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#calendar-form {
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#event-desc {
+    white-space: pre-wrap;
+}
+
+.search-group{
+    padding: 10px;
+}

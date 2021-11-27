@@ -1,0 +1,22 @@
+body {
+    font-family: "Work Sans", sans-serif;
+    margin-left: 70px;
+    margin-top: 70px;
+}
+.time {
+    color: #fff;
+    padding: 8px;
+    width: 500px;
+}
+.hms {
+    font-size: 20pt;
+    font-weight: 140;
+}
+.ampm {
+    font-size: 22pt;
+    color: yellow;
+}
+.date {
+    font-size: 15pt;
+}
+
