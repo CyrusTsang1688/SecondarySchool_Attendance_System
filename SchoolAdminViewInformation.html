@@ -1,0 +1,2166 @@
+<div style="height: 200px;">
+<!DOCTYPE html>
+
+<html lang="en"><!--Author: Tsang Ho Man 26/11/2021-->
+<head>
+	<meta charset="UTF-8">
+    <title>Innovative Secondary school Admin Page</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="img/INS_LOGO.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/INS_LOGO.png">
+
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/SAVI.css">
+    <link rel="stylesheet" href="css/action.less">
+	<link href="style.css" rel="stylesheet">
+</head>
+<script src="https://kit.fontawesome.com/52ac0a9f1f.js" crossorigin="anonymous"></script>
+<script src="jslib\jquery-1.11.1.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+ <script>
+
+$(document).ready(function() {
+    $("#ss").click(function() {
+            $("body").addClass("Disable");
+        });
+    $("#tc").hide();
+    $("#sd1819").hide();
+    $("#sd1920").hide();
+    $("#sd2021").hide();
+    $("#EditClass").hide();
+    $("form.formSD").on("submit", function() {
+        alert("I've been saved.");
+        });
+  $(".toggle-button").click(function() {
+    $(this).parent().find("ul").slideToggle(function() {
+      // Animation complete.
+    });
+    
+  });
+        var SATable = $('#ta1').DataTable({
+             "data": SATableData.data,
+             select:"single",
+             "columns": [
+                 {
+                    "className": 'ss',
+                     "orderable": false,
+                     "data": null,
+                     "defaultContent": '',
+                     "render": function () {
+                        $("td:first-of-type").addClass("Disable");
+                        return '<button id="ss" class="ss" onclick="myFunction()">Disable/Enable</button>';
+                     },
+                     width:"15px"
+                 },
+                 { "data": "account_number" },
+                 { "data": "name" },
+                 { "data": "ps" },
+                 { "data": "creation_date" }
+             ],
+             "order": [[1, 'asc']]
+         });
+        var TCtable = $('#ta2').DataTable({
+             "data": TCTableData.data,
+             select:"single",
+             "columns": [
+                 {
+                    "className": 'ss',
+                     "orderable": false,
+                     "data": null,
+                     "defaultContent": '',
+                     "render": function () {
+                        $("td:first-of-type").addClass("Disable");
+                        return '<button id="ss" class="ss" onclick="myFunction()">Disable/Enable</button>';
+                     },
+                     width:"15px"
+                 },
+                 { "data": "account_number" },
+                 { "data": "name" },
+                 { "data": "ps" },
+                 { "data": "phone_number" },
+                 { "data": "management_class" },
+                 { "data": "creation_date" }
+             ],
+             "order": [[1, 'asc']]
+         });
+        var SDTable1819 = $('#ta3').DataTable({
+             "data": SDTableData1819.data,
+             select:"single",
+             "columns": [
+                 
+                 {"className": 'ss',
+                     "orderable": false,
+                     "data": null,
+                     "defaultContent": '',
+                     "render": function () {
+                        $("td:first-of-type").addClass("Disable");
+                        return '<button id="ss" class="ss" onclick="myFunction()">Disable/Enable</button>';
+                     },width:"5px"
+                 },
+                 {
+                     "className": 'details-control',
+                     "orderable": false,
+                     "data": null,
+                     "defaultContent": '',
+                     "render": function () {
+                         return '<i class="fa fa-plus-square" class="ss" aria-hidden="true"></i>';
+                     },
+                     width:"10px"
+                 },
+                 { "data": "account_number" },
+                 { "data": "name" },
+                 { "data": "ps" },
+                 { "data": "class" },
+                 { "data": "phone_number" },
+                 { "data": "sex" },
+                 { "data": "birth" }
+             ],
+             "order": [[1, 'asc']]
+         });
+        var SDTable1920 = $('#ta4').DataTable({
+             "data": SDTableData1920.data,
+             select:"single",
+             "columns": [
+             {"className": 'ss',
+                     "orderable": false,
+                     "data": null,
+                     "defaultContent": '',
+                     "render": function () {
+                        $("td:first-of-type").addClass("Disable");
+                        return '<button id="ss" class="ss" onclick="myFunction()">Disable/Enable</button>';
+                     },width:"5px"
+                 },
+                 {
+                     "className": 'details-control',
+                     "orderable": false,
+                     "data": null,
+                     "defaultContent": '',
+                     "render": function () {
+                         return '<i class="fa fa-plus-square" class="ss" aria-hidden="true"></i>';
+                     },
+                     width:"10px"
+                 },
+                 { "data": "account_number" },
+                 { "data": "name" },
+                 { "data": "ps" },
+                 { "data": "class" },
+                 { "data": "phone_number" },
+                 { "data": "sex" },
+                 { "data": "birth" }
+             ],
+             "order": [[1, 'asc']]
+         });
+        var SDTable2021 = $('#ta5').DataTable({
+             "data": SDTableData2021.data,
+             select:"single",
+             "columns": [
+                {"className": 'ss',
+                     "orderable": false,
+                     "data": null,
+                     "defaultContent": '',
+                     "render": function () {
+                        $("td:first-of-type").addClass("Disable");
+                        return '<button id="ss" class="ss" onclick="myFunction()">Disable/Enable</button>';
+                     },width:"5px"
+                 },
+                 {
+                     "className": 'details-control',
+                     "orderable": false,
+                     "data": null,
+                     "defaultContent": '',
+                     "render": function () {
+                         return '<i class="fa fa-plus-square" class="ss" aria-hidden="true"></i>';
+                     },
+                     width:"10px"
+                 },
+                 { "data": "account_number" },
+                 { "data": "name" },
+                 { "data": "ps" },
+                 { "data": "class" },
+                 { "data": "phone_number" },
+                 { "data": "sex" },
+                 { "data": "birth" }
+             ],
+             "order": [[1, 'asc']]
+         });
+        $("#showSA").click(function() {
+            $("#sa").show();
+            $('#tc').hide();
+            $("#sd1819").hide();
+            $("#sd1920").hide();
+            $("#sd2021").hide();
+            $("#EditClass").hide();
+        });
+        $("#showTC").click(function() {
+            $("#sa").hide();
+            $('#tc').show();
+            $("#sd1819").hide();
+            $("#sd1920").hide();
+            $("#sd2021").hide();
+            $("#EditClass").hide();
+        });
+        $("#showSD1819").click(function() {
+            $("#sa").hide();
+            $('#tc').hide();
+            $('#sd1819').show();
+            $("#sd1920").hide();
+            $("#sd2021").hide();
+            $("#EditClass").hide();
+        });
+        $("#showSD1920").click(function() {
+            $("#sa").hide();
+            $('#tc').hide();
+            $('#sd1819').hide();
+            $("#sd1920").show();
+            $("#sd2021").hide();
+            $("#EditClass").hide();
+        });
+        $("#showSD2021").click(function() {
+            $("#sa").hide();
+            $('#tc').hide();
+            $('#sd1819').hide();
+            $("#sd1920").hide();
+            $("#sd2021").show();
+            $("#EditClass").hide();
+        });
+        $("#Edit").click(function() {
+            $("#sa").hide();
+            $('#tc').hide();
+            $('#sd1819').hide();
+            $("#sd1920").hide();
+            $("#sd2021").hide();
+            $("#EditClass").show();
+        });
+         
+        $('#ta1 tbody').on ('click', 'td.ss', function () {
+            if ($(this).hasClass('Disable')){
+                 $(this).closest('td').addClass('Dis');
+                 $(this).removeClass('Disable');
+            }else if($(this).hasClass('Dis')){
+                $(this).closest('td').addClass('Disable');
+                $(this).removeClass('Dis');
+            }     
+         });
+         $('#ta2 tbody').on ('click', 'td.ss', function () {
+            if ($(this).hasClass('Disable')){
+                 $(this).closest('td').addClass('Dis');
+                 $(this).removeClass('Disable');
+            }else if($(this).hasClass('Dis')){
+                $(this).closest('td').addClass('Disable');
+                $(this).removeClass('Dis');
+            }     
+         });
+         $('#ta3 tbody').on ('click', 'td.ss', function () {
+            if ($(this).hasClass('Disable')){
+                 $(this).closest('td').addClass('Dis');
+                 $(this).removeClass('Disable');
+            }else if($(this).hasClass('Dis')){
+                $(this).closest('td').addClass('Disable');
+                $(this).removeClass('Dis');
+            }     
+         });
+         $('#ta4 tbody').on ('click', 'td.ss', function () {
+            if ($(this).hasClass('Disable')){
+                 $(this).closest('td').addClass('Dis');
+                 $(this).removeClass('Disable');
+            }else if($(this).hasClass('Dis')){
+                $(this).closest('td').addClass('Disable');
+                $(this).removeClass('Dis');
+            }     
+         });
+         $('#ta5 tbody').on ('click', 'td.ss', function () {
+            if ($(this).hasClass('Disable')){
+                 $(this).closest('td').addClass('Dis');
+                 $(this).removeClass('Disable');
+            }else if($(this).hasClass('Dis')){
+                $(this).closest('td').addClass('Disable');
+                $(this).removeClass('Dis');
+            }     
+         });
+        $('#ta3 tbody').on ('click', 'td.details-control', function () {
+             var tr = $(this).closest('tr');
+             var tdi = tr.find("i.fa");
+             var row = SDTable1819.row(tr);
+             if ($(this).hasClass('Disable')){
+                 $(this).closest('td').addClass('Dis');
+                 $(this).removeClass('Disable');
+            }else if($(this).hasClass('Dis')){
+                $(this).closest('td').addClass('Disable');
+                $(this).removeClass('Dis');
+            } 
+             if (row.child.isShown()) {
+                 // This row is already open - close it
+                 row.child.hide();
+                 tr.removeClass('shown');
+                 tdi.first().removeClass('fa-minus-square');
+                 tdi.first().addClass('fa-plus-square');
+                 tdi.first().parent.addClass('Disable');
+             }
+             else {
+                 // Open this row
+                 row.child(format(row.data())).show();
+ // *********************************************
+            
+                 tr.addClass('shown');
+                 tdi.first().removeClass('fa-plus-square');
+                 tdi.first().addClass('fa-minus-square');
+             }
+         });
+         $('#ta4 tbody').on ('click', 'td.details-control', function () {
+             var tr = $(this).closest('tr');
+             var tdi = tr.find("i.fa");
+             var row = SDTable1920.row(tr);
+             if ($(this).hasClass('Disable')){
+                 $(this).closest('td').addClass('Dis');
+                 $(this).removeClass('Disable');
+            }else if($(this).hasClass('Dis')){
+                $(this).closest('td').addClass('Disable');
+                $(this).removeClass('Dis');
+            } 
+             if (row.child.isShown()) {
+                 // This row is already open - close it
+                 row.child.hide();
+                 tr.removeClass('shown');
+                 tdi.first().removeClass('fa-minus-square');
+                 tdi.first().addClass('fa-plus-square');
+             }
+             else {
+                 // Open this row
+                 row.child(format(row.data())).show();
+ // *********************************************
+            
+                 tr.addClass('shown');
+                 tdi.first().removeClass('fa-plus-square');
+                 tdi.first().addClass('fa-minus-square');
+             }
+         });
+         $('#ta5 tbody').on ('click', 'td.details-control', function () {
+             var tr = $(this).closest('tr');
+             var tdi = tr.find("i.fa");
+             var row = SDTable2021.row(tr);
+             if ($(this).hasClass('Disable')){
+                 $(this).closest('td').addClass('Dis');
+                 $(this).removeClass('Disable');
+            }else if($(this).hasClass('Dis')){
+                $(this).closest('td').addClass('Disable');
+                $(this).removeClass('Dis');
+            } 
+             if (row.child.isShown()) {
+                 // This row is already open - close it
+                 row.child.hide();
+                 tr.removeClass('shown');
+                 tdi.first().removeClass('fa-minus-square');
+                 tdi.first().addClass('fa-plus-square');
+             }
+             else {
+                 // Open this row
+                 row.child(format(row.data())).show();
+ // *********************************************
+            
+                 tr.addClass('shown');
+                 tdi.first().removeClass('fa-plus-square');
+                 tdi.first().addClass('fa-minus-square');
+             }
+         });
+
+         SATableData.on("user-select", function (e, dt, type, cell, originalEvent) {
+             if ($(cell.node()).hasClass("details-control")) {
+                 e.preventDefault();
+             }
+         });
+         TCTableData.on("user-select", function (e, dt, type, cell, originalEvent) {
+             if ($(cell.node()).hasClass("details-control")) {
+                 e.preventDefault();
+             }
+         });
+         SDTableData1819.on("user-select", function (e, dt, type, cell, originalEvent) {
+             if ($(cell.node()).hasClass("details-control")) {
+                 e.preventDefault();
+             }
+         });
+         SDTableData1920.on("user-select", function (e, dt, type, cell, originalEvent) {
+             if ($(cell.node()).hasClass("details-control")) {
+                 e.preventDefault();
+             }
+         });
+         SDTableData2021.on("user-select", function (e, dt, type, cell, originalEvent) {
+             if ($(cell.node()).hasClass("details-control")) {
+                 e.preventDefault();
+             }
+         });
+
+        
+       
+
+     });
+     $("#formSD").submit(function() {
+            
+            alert("Save success!");
+                
+        });
+        function functionAlert(msg, myYes)
+         {
+            var confirmBox = $("#confirm");
+            confirmBox.find(".message").text(msg);
+            confirmBox.find(".yes").unbind().click(function()
+            {
+               confirmBox.hide();
+            });
+            confirmBox.find(".yes").click(myYes);
+            confirmBox.show();
+         }
+         function functionAlert1(msg, myYes)
+         {
+            var confirmBox = $("#confirm1");
+            confirmBox.find(".message1").text(msg);
+            confirmBox.find(".yes").unbind().click(function()
+            {
+               confirmBox.hide();
+            });
+            confirmBox.find(".yes").click(myYes);
+            confirmBox.show();
+         }
+         function functionAlert2(msg, myYes)
+         {
+            var confirmBox = $("#confirm2");
+            confirmBox.find(".message2").text(msg);
+            confirmBox.find(".yes").unbind().click(function()
+            {
+               confirmBox.hide();
+            });
+            confirmBox.find(".yes").click(myYes);
+            confirmBox.show();
+         }
+        function functionAlert1920(msg, myYes)
+         {
+            var confirmBox = $("#confirm1920");
+            confirmBox.find(".message1920").text(msg);
+            confirmBox.find(".yes").unbind().click(function()
+            {
+               confirmBox.hide();
+            });
+            confirmBox.find(".yes").click(myYes);
+            confirmBox.show();
+         }
+        function functionAlert1819(msg, myYes)
+         {
+            var confirmBox = $("#confirm1819");
+            confirmBox.find(".message1819").text(msg);
+            confirmBox.find(".yes").unbind().click(function()
+            {
+               confirmBox.hide();
+            });
+            confirmBox.find(".yes").click(myYes);
+            confirmBox.show();
+         }
+        function functionAlert2021(msg, myYes)
+         {
+            var confirmBox = $("#confirm2021");
+            confirmBox.find(".message2021").text(msg);
+            confirmBox.find(".yes").unbind().click(function()
+            {
+               confirmBox.hide();
+            });
+            confirmBox.find(".yes").click(myYes);
+            confirmBox.show();
+         }
+         
+        function castvote() {
+            var datalist = document.getElementById('Class');
+            var browserChildren = document.getElementById('Classlist').children
+
+            var flag = false
+            for(let i = 0; i < browserChildren.length; i++){
+                flag = browserChildren[i].value === datalist.value || flag
+            }
+            console.log(datalist.value)
+            if (flag == true){
+                if (datalist.value == "4A"){
+                   document.getElementById('Total').value = 22
+                   document.getElementById('Total').removeAttribute("disabled")
+                   document.getElementById('Language').value = "English"
+                   document.getElementById('Language').removeAttribute("disabled")
+                   document.getElementById('Method').value = "face-to-face"
+                   document.getElementById('Method').removeAttribute("disabled")
+                   document.getElementById('txtDate_start').value = "2021-10-20"
+                   document.getElementById('txtDate_start').removeAttribute("disabled")
+                   document.getElementById('txtDate_end').value = "2022-07-01"
+                   document.getElementById('txtDate_end').removeAttribute("disabled")
+                   
+                }
+                if (datalist.value == "5A"){
+                   document.getElementById('Total').value = 30
+                   document.getElementById('Total').removeAttribute("disabled")
+                   document.getElementById('Language').value = "Chinese"
+                   document.getElementById('Language').removeAttribute("disabled")
+                   document.getElementById('Method').value = "Online"
+                   document.getElementById('Method').removeAttribute("disabled")
+                   document.getElementById('txtDate_start').value = "2021-11-25"
+                   document.getElementById('txtDate_start').removeAttribute("disabled")
+                   document.getElementById('txtDate_end').value = "2022-08-04"
+                   document.getElementById('txtDate_end').removeAttribute("disabled")
+                   
+                }
+                if (datalist.value == "6D"){
+                   document.getElementById('Total').value = 22
+                   document.getElementById('Total').removeAttribute("disabled")
+                   document.getElementById('Language').value = "English"
+                   document.getElementById('Language').removeAttribute("disabled")
+                   document.getElementById('Method').value = "face-to-face"
+                   document.getElementById('Method').removeAttribute("disabled")
+                   document.getElementById('txtDate_start').value = "2021-12-20"
+                   document.getElementById('txtDate_start').removeAttribute("disabled")
+                   document.getElementById('txtDate_end').value = "2022-10-01"
+                   document.getElementById('txtDate_end').removeAttribute("disabled")
+                   
+                }
+            }
+        } 
+        function Remove() {
+            alert("Remove class successful");
+            window.location.replace("SchoolAdminViewInformation.html");
+        }
+    
+    
+    function format(d){
+
+    	return '<div class="panel panel-primary">' +
+                    '<div class="panel-heading">' +
+                        '<h3 class="panel-title">Informations of attendance records</h3>' +
+                    '</div>' +
+                    '<div class="panel-body">' +
+                        '<div id="cc" class="row">' +
+                            
+                           
+                            '<div class=" col-md-9 col-lg-9 hidden-xs hidden-sm">'+
+                                '<strong>'+ d.name +'</strong><br>' +
+                                '<table class="table table-user-information">' +
+                                    '<tbody>' +
+                                    '<tr>' +
+                                        '<td>Attendance Rate: </td>' +
+                                        '<td>'+ d.attendance_rate+'</td>' +
+                                    '</tr>' +
+                                    '<tr>' +
+                                        '<td>Days Absent:</td>' +
+                                        '<td>'+d.days_absent+'</td>' +
+                                    '</tr><tr> <td>Days Sick:</td>'+
+                                        '<td>'+d.days_sick +'</td>'+
+                                    '</tr><tr>' +
+                                        '<td>Days Late:</td><td>'+d.days_late+'</td>' +
+                                    '</tr> </tbody></table> </div> </div></div>' +
+                    '<div class="panel-footer">' +
+                        '<a class="btn btn-primary voir-pdf" title="Exemple de PDF dans un « modal »" href="files/test.pdf">PDF</a>'+
+                        ' <span class="pull-right">'+
+                           
+                                    
+                        '</span></div></div>';
+
+    	  
+         
+        
+
+
+
+    }
+
+    var SATableData = {
+    "data": [
+    {
+    "account_number": "SA0001",
+    "name": "Admin",
+    "ps": "pw",
+    
+    "creation_date": "2011/04/25"
+    
+    },
+    {
+    "account_number": "SA0002",
+    "name": "gg ho",
+    "ps": "336s",
+    
+    "creation_date":"2012/03/29"
+    
+    },
+    {
+    "account_number": "SA0003",
+    "name": "haha o",
+    "ps": "ssd2",
+    
+    "creation_date": "2008/11/28"
+    
+    },
+    {
+    "account_number": "SA0004",
+    "name": "tt good",
+    "ps": "6d8912",
+    
+    "creation_date": "2012/12/02"
+    
+    },
+    {
+    "account_number": "SA0005",
+    "name": "leaf chan",
+    "ps": "cpu11",
+    
+    "creation_date": "2011/01/25"
+    
+    }
+    ]
+    };
+    var TCTableData = {
+    
+    "data": [
+    {
+    "account_number": "TC0001",
+    "name": "Au Wai Lun",
+    "ps": "pw",
+    "phone_number": "9249 2094",
+    "management_class":"1a,2a",
+    
+    "creation_date": "2011/04/25"
+    
+    },
+    {
+    "account_number": "TC0002",
+    "name": "gg ho",
+    "ps": "336s",
+    "phone_number": "2176 8951",
+    "management_class":"1a,2a",
+    
+    "creation_date":"2012/03/29"
+    
+    },
+    {
+    "account_number": "TC0003",
+    "name": "haha o",
+    "ps": "ssd2",
+    "phone_number": "2236 8951",
+    "management_class":"1a,2a",
+    
+    "creation_date": "2008/11/28",
+    
+    },
+    {
+    "account_number": "TC0004",
+    "name": "tt good",
+    "ps": "68912",
+    "phone_number": "2176 8951",
+    "management_class":"1a,2a",
+    
+    "creation_date": "2012/12/02"
+    
+    },
+    {
+    "account_number": "TC0005",
+    "name": "leaf chan",
+    "ps": "cpu11",
+    "phone_number": "1236 8951",
+    "management_class":"1a,2a",
+    
+    "creation_date": "2011/01/25"
+    
+    }
+    ]
+    };
+    var SDTableData1819 = {
+    "data": [
+    {
+    "account_number": "SD0001",
+    "name": "Tsang Fung",
+    "ps": "sad4jl51",
+    "class": "4A",
+    "phone_number": "5421 8422",
+    "attendance_rate": "43%",
+    "days_absent": "80",
+    "days_sick": "23",
+    "days_late": "46",
+    "birth": "2004/04/25",
+    "sex": "male"
+    },
+    {
+    "account_number": "SD0002",
+    "name": "Tsang Man",
+    "ps": "52jgik221",
+    "class": "4A",
+    "phone_number": "8422 6200",
+    "attendance_rate": "43%",
+    "days_absent": "80",
+    "days_sick": "23",
+    "days_late": "34",
+    "birth": "2004/07/25",
+    "sex": "male"
+    },
+    {
+    "account_number": "SD0003",
+    "name": "chung tsz",
+    "ps": "989hj4121",
+    "class": "4D",
+    "phone_number": "54151514",
+    "attendance_rate": "40%",
+    "days_absent": "80",
+    "days_sick": "3",
+    "days_late": "4",
+    "birth": "2004/08/25",
+    "sex": "male"
+    },
+    {
+    "account_number": "SD0004",
+    "name": "hi tsz",
+    "ps": "esfkh51",
+    "class": "4F",
+    "phone_number": "15856287",
+    "attendance_rate": "33%",
+    "days_absent": "90",
+    "days_sick": "23",
+    "days_late": "64",
+    "birth": "2004/07/25",
+    "sex": "male"
+    },
+    {
+    "account_number": "SD0005",
+    "name": "lee man",
+    "ps": "asdmopj2",
+    "class": "4C",
+    "phone_number": "65156155",
+    "attendance_rate": "83%",
+    "days_absent": "8",
+    "days_sick": "2",
+    "days_late": "3",
+    "birth": "2004/07/25",
+    "sex": "female"
+    }
+    ]
+    };
+    var SDTableData1920 = {
+    "data": [
+    {
+    "account_number": "SD0006",
+    "name": "yan Klein",
+    "ps": "sahjgd451",
+    "class": "5A",
+    "phone_number": "2131 2442",
+    "attendance_rate": "43%",
+    "days_absent": "60",
+    "days_sick": "63",
+    "days_late": "4",
+    "birth": "2005/07/25",
+    "sex": "male"
+    },
+    {
+    "account_number": "SD0007",
+    "name": "Baker fun",
+    "ps": "52jhk221",
+    "class": "5A",
+    "phone_number": "1054 1515",
+    "attendance_rate": "63%",
+    "days_absent": "10",
+    "days_sick": "23",
+    "days_late": "14",
+    "birth": "2005/07/30",
+    "sex": "female"
+    },
+    {
+    "account_number": "SD0008",
+    "name": "chung Patel",
+    "ps": "98vyi921",
+    "class": "5D",
+    "phone_number": "5415 1514",
+    "attendance_rate": "33%",
+    "days_absent": "80",
+    "days_sick": "3",
+    "days_late": "64",
+    "birth": "2005/12/15",
+    "sex": "male"
+    },
+    {
+    "account_number": "SD0009",
+    "name": "Dopey tsz",
+    "ps": "esf25151",
+    "class": "5F",
+    "phone_number": "1585 6287",
+    "attendance_rate": "90%",
+    "days_absent": "0",
+    "days_sick": "3",
+    "days_late": "4",
+    "birth": "2005/10/25",
+    "sex": "male"
+    },
+    {
+    "account_number": "SD0010",
+    "name": "lee Nala",
+    "ps": "ashjkd2",
+    "class": "5C",
+    "phone_number": "6515 6155",
+    "attendance_rate": "33%",
+    "days_absent": "80",
+    "days_sick": "3",
+    "days_late": "64",
+    "birth": "2005/12/15",
+    "sex": "female"
+    }
+    ]
+    };
+    var SDTableData2021 = {
+    "data": [
+    {
+    "account_number": "SD0011",
+    "name": "Tsang Tsz Fung",
+    "ps": "safstd451",
+    "class": "4A",
+    "phone_number": "5421 8422",
+    "attendance_rate": "43%",
+    "days_absent": "80",
+    "days_sick": "23",
+    "days_late": "64",
+    "birth": "2006/04/25",
+    "sex": "male"
+    },
+    {
+    "account_number": "SD0012",
+    "name": "Tsang Ho Man",
+    "ps": "52245121",
+    "class": "4A",
+    "phone_number": "8422 6200",
+    "attendance_rate": "43%",
+    "days_absent": "80",
+    "days_sick": "23",
+    "days_late": "46",
+    "birth": "2006/04/25",
+    "sex": "male"
+    },
+    {
+    "account_number": "SD0013",
+    "name": "Xu Shang Chi",
+    "ps": "pw",
+    "class": "4A",
+    "phone_number": "9249 2094",
+    "attendance_rate": "86%",
+    "days_absent": "20",
+    "days_sick": "24",
+    "days_late": "53",
+    "birth": "2006/01/12",
+    "sex": "male"
+    },
+    {
+    "account_number": "SD0014",
+    "name": "CHAN KAM SHING",
+    "ps": "esf56641",
+    "class": "4A",
+    "phone_number": "6224 6200",
+    "attendance_rate": "60%",
+    "days_absent": "50",
+    "days_sick": "34",
+    "days_late": "25",
+    "birth": "2006/03/29",
+    "sex": "female"
+    },
+    {
+    "account_number": "SD0015",
+    "name": "CHAN KING",
+    "ps": "asd5142",
+    "class": "5A",
+    "phone_number": "6200 5407",
+    "attendance_rate": "62%",
+    "days_absent": "54",
+    "days_sick": "5",
+    "days_late": "26",
+    "birth": "2005/11/28",
+    "sex": "male"
+    },
+    {
+    "account_number": "SD0016",
+    "name": "CHAN MEI SIM",
+    "ps": "esf56641",
+    "class": "5A",
+    "phone_number": "6200 4804",
+    "attendance_rate": "70%",
+    "days_absent": "61",
+    "days_sick": "4",
+    "days_late": "39",
+    "birth": "2006/12/02",
+    "sex": "female"
+    },
+    {
+    "account_number": "SD0017",
+    "name": "AU YEE WAN",
+    "ps": "esf5ss6641",
+    "class": "5A",
+    "phone_number": "6200 9608",
+    "attendance_rate": "80%",
+    "days_absent": "20",
+    "days_sick": "2",
+    "days_late": "42",
+    "birth": "2006/08/06",
+    "sex": "female"
+    },
+    {
+    "account_number": "SD0018",
+    "name": "Lee Hak kan",
+    "ps": "esf5cc6641",
+    "class": "5A",
+    "phone_number": "6200 2360",
+    "attendance_rate": "72%",
+    "days_absent": "15",
+    "days_sick": "7",
+    "days_late": "46",
+    "birth": "2006/10/14",
+    "sex": "female"
+    },
+    {
+    "account_number": "SD0019",
+    "name": "Chan Kong sang",
+    "ps": "esfasd56641",
+    "class": "5A",
+    "phone_number": "6200 2360",
+    "attendance_rate": "77%",
+    "days_absent": "13",
+    "days_sick": "25",
+    "days_late": "37",
+    "birth": "2007/09/15",
+    "sex": "male"
+    },
+    {
+    "account_number": "SD0020",
+    "name": "Tony Wong",
+    "ps": "esf5664511",
+    "class": "5A",
+    "phone_number": "3059 1667",
+    "attendance_rate": "83%",
+    "days_absent": "9",
+    "days_sick": "33",
+    "days_late": "25",
+    "birth": "2007/12/13",
+    "sex": "female"
+    },
+    {
+    "account_number": "SD0021",
+    "name": "Tony Leung",
+    "ps": "esf5sad6641",
+    "class": "5A",
+    "phone_number": "3814 3059",
+    "attendance_rate": "90%",
+    "days_absent": "8",
+    "days_sick": "41",
+    "days_late": "60",
+    "birth": "2007/12/19",
+    "sex": "female"
+    },
+    {
+    "account_number": "SD0022",
+    "name": "Chow Yun-fat",
+    "ps": "aasda1",
+    "class": "5A",
+    "phone_number": "9497 6741",
+    "attendance_rate": "100%",
+    "days_absent": "0",
+    "days_sick": "0",
+    "days_late": "0",
+    "birth": "2007/03/03",
+    "sex": "male"
+    },
+    {
+    "account_number": "SD0023",
+    "name": "Maggie Cheung",
+    "ps": "esadsa41",
+    "class": "6D",
+    "phone_number": "6741 3059",
+    "attendance_rate": "70%",
+    "days_absent": "18",
+    "days_sick": "6",
+    "days_late": "85",
+    "birth": "2007/10/16",
+    "sex": "female"
+    },
+    {
+    "account_number": "SD0024",
+    "name": "Stephen Chow",
+    "ps": "escxv41",
+    "class": "6D",
+    "phone_number": "3597 6741",
+    "attendance_rate": "80%",
+    "days_absent": "10",
+    "days_sick": "20",
+    "days_late": "42",
+    "birth": "2007/12/18",
+    "sex": "female"
+    },
+    {
+    "account_number": "SD0025",
+    "name": "Anita Mui",
+    "ps": "escxvxc",
+    "class": "6D",
+    "phone_number": "6741 1965",
+    "attendance_rate": "82%",
+    "days_absent": "12",
+    "days_sick": "30",
+    "days_late": "48",
+    "birth": "2007/03/17",
+    "sex": "female"
+    },
+    {
+    "account_number": "SD0026",
+    "name": "Andy Lau",
+    "ps": "sadsa41",
+    "class": "6D",
+    "phone_number": "6741 3059",
+    "attendance_rate": "78%",
+    "days_absent": "16",
+    "days_sick": "8",
+    "days_late": "40",
+    "birth": "2007/11/27",
+    "sex": "male"
+    },
+    {
+    "account_number": "SD0027",
+    "name": "Aaron Kwok",
+    "ps": "easdsa1",
+    "class": "6D",
+    "phone_number": "3059 3059",
+    "attendance_rate": "88%",
+    "days_absent": "12",
+    "days_sick": "10",
+    "days_late": "40",
+    "birth": "2007/06/09",
+    "sex": "female"
+    }
+    ]
+    };
+    
+
+//  les informations de chaque candidat
+      var panels = $('.user-infos');
+    var panelsButton = $('.dropdown-user');
+    panels.hide();
+
+    //Click dropdown
+    panelsButton.click(function() {
+        //get data-for attribute
+        var dataFor = $(this).attr('data-for');
+        var idFor = $(dataFor);
+
+        //current button
+        var currentButton = $(this);
+        idFor.slideToggle(400, function() {
+            //Completed slidetoggle
+            if(idFor.is(':visible'))
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+            }
+            else
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+            }
+        })
+    });
+
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+ </script>
+<body>
+	<div class="box-area">
+		<header>
+			<div class="wrapper">
+				<div class="logo">
+					<a>School Admin</a>
+				</div>
+				<nav>
+					<i style="background-color: aliceblue;" class="fas fa-search"></i><a  href="SchoolAdminViewInformation.html">User/Class Information</a> 
+                    <i style="background-color: aliceblue;" class="far fa-plus-square"></i><a  href="(SchoolAdmin)CreateAccount.html">Create Accounts/Class</a> 
+                    <i style="background-color: aliceblue;" class="fas fa-clipboard"></i><a  href="(SchoolAdmin)SickRecord.html">Sick record</a>
+                    <div class="links-unordered">
+                        <a class="toggle-button" href="Login.html">Logout</a>
+                
+                        <ul style="display:none;">
+                            <br>
+                          <li><a href="#">cdn.sc.rockstargames.com</a></li>
+                          <li><a href="#">lifeinvader.com</a></li>
+                          <li><a href="#">rockstargames.com</a></li>
+                          <li><a href="#">socialclub.rockstargames.com</a></li>
+                        </ul>
+                    </div>
+				</nav>
+			</div>
+		</header>
+		<div class="banner-area">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" type="text/css">
+    	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
+		<link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+            <div>
+                <div class="links-unordered">
+                    <button class="choose-button" id="showSA">School Admin</button>
+                    <button class="choose-button" id="showTC">Teacher</button>
+                    
+                    <button class="toggle-button" id="ss" >Student</button>
+                    <ul style="display:none;">
+                        <br>
+                      <li><a href="#" id="showSD1819">2018-2019</a></li>
+                      <li><a href="#" id="showSD1920">2019-2020</a></li>
+                      <li><a href="#" id="showSD2021">2020-2021</a></li>
+                    </ul>
+                    <button class="choose-button" id="Edit">Edit Class</button>
+                </div>
+            </div>
+            <div id="sa">
+				<table width="100%" class="display" id="ta1" cellspacing="0">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Account Number</th>
+							<th>Name</th>
+							<th>Password</th>
+							<th>Creation Date</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th></th>
+							<th>Account Number</th>
+							<th>Name</th>
+							<th>Password</th>
+							<th>Creation Date</th>
+						</tr>
+					</tfoot>
+				</table>
+            </div>
+            <div id="tc">
+                <table width="100%" class="display" id="ta2" cellspacing="0">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Account Number</th>
+							<th>Name</th>
+							<th>Password</th>
+                            <th>Phone Number</th>
+                            <th>Management Class</th>
+                            <th>Creation Date</th>
+						</tr>
+					</thead>
+					<tfoot><!--Author: Tsang Ho Man 26/11/2021-->
+						<tr>
+							<th></th>
+							<th>Account Number</th>
+							<th>Name</th>
+							<th>Password</th>
+                            <th>Phone Number</th>
+                            <th>Management Class</th>
+                            <th>Creation Date</th>
+						</tr>
+					</tfoot>
+				</table>
+            </div>
+                <div id="sd1819">
+                <table width="100%" class="display" id="ta3" cellspacing="0">
+					<thead>
+						<tr>
+                            
+							<th>Detail</th>
+                            <th>Detail</th>
+							<th>Account Number</th>
+							<th>Name</th>
+							<th>Password</th>
+                            <th>Class</th>
+                            <th>Phone Number</th>
+                            <th>Sex</th>
+                            <th>Birth</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>Detail</th>
+                            <th>Detail</th>
+							<th>Account Number</th>
+							<th>Name</th>
+							<th>Password</th>
+                            <th>Class</th>
+                            <th>Phone Number</th>
+                            <th>Sex</th>
+                            <th>Birth</th>
+						</tr>
+					</tfoot>
+				</table>
+                <div id="confirm">
+                    <div class = "message">
+                        <div style="display: inline-block;">
+                            2018-2019 school reports<br><br><br>
+                            Name:  Tsang Fung<br>
+                            Attendance rate:43%<br>
+                            Absents record:80<br>
+                            Sick leave record:23<br>
+                            Late record:46<br><br><br>
+                                
+                        </div>  
+                        <div style="display: inline-block;">
+                            
+                            Name:  Tsang Man<br>
+                            Attendance rate:43%<br>
+                            Absents record:80<br>
+                            Sick leave record:23<br>
+                            Late record:34<br><br><br>
+                                
+                        </div> 
+                        <div style="display: inline-block;">
+                            
+                            Name:  chung tsz<br>
+                            Attendance rate:40%<br>
+                            Absents record:80<br>
+                            Sick leave record:3<br>
+                            Late record:4<br><br><br>
+                                
+                        </div> 
+                        <div style="display: inline-block;">
+                            
+                            Name:  hi tsz<br>
+                            Attendance rate:33%<br>
+                            Absents record:90<br>
+                            Sick leave record:23<br>
+                            Late record:64<br><br><br>
+                                
+                        </div> 
+                        <div style="display: inline-block;">
+                            
+                            Name:  lee man<br>
+                            Attendance rate:83%<br>
+                            Absents record:8<br>
+                            Sick leave record:2<br>
+                            Late record:3<br><br><br>
+                                
+                        </div>
+                        <div style="display: inline-block;">
+                            2019-2020 school reports<br><br><br>
+                            Name:  yan Klein<br>
+                            Attendance rate:43%<br>
+                            Absents record:60<br>
+                            Sick leave record:63<br>
+                            Late record:4<br><br><br>
+                                
+                        </div>  
+                        <div style="display: inline-block;">
+                            
+                            Name:  Baker fun<br>
+                            Attendance rate:63%<br>
+                            Absents record:10<br>
+                            Sick leave record:23<br>
+                            Late record:14<br><br><br>
+                                
+                        </div> 
+                        <div style="display: inline-block;">
+                            
+                            Name:  chung Patel<br>
+                            Attendance rate:33%<br>
+                            Absents record:80<br>
+                            Sick leave record:3<br>
+                            Late record:64<br><br><br>
+                                
+                        </div> 
+                        <div style="display: inline-block;">
+                            
+                            Name:  Dopey tsz<br>
+                            Attendance rate:90%<br>
+                            Absents record:0<br>
+                            Sick leave record:3<br>
+                            Late record:4<br><br><br>
+                                
+                        </div> 
+                        <div style="display: inline-block;">
+                            
+                            Name:  lee Nala<br>
+                            Attendance rate:33%<br>
+                            Absents record:80<br>
+                            Sick leave record:3<br>
+                            Late record:64<br><br><br>
+                                
+                        </div> 
+                        
+                        <div style="display: inline-block;">
+                            2020-2021 school reports<br><br><br>
+                            Name:  Tsang Tsz Fung<br>
+                            Attendance rate:43%<br>
+                            Absents record:80<br>
+                            Sick leave record:23<br>
+                            Late record:64<br><br><br>
+                                            
+                            Name:  Tsang Ho Man<br>
+                            Attendance rate:43%<br>
+                            Absents record:80<br>
+                            Sick leave record:23<br>
+                            Late record:46<br><br><br>
+                                            
+                            Name:  Xu Shang Chi<br>
+                            Attendance rate:86%<br>
+                            Absents record:83<br>
+                            Sick leave record:24<br>
+                            Late record:53<br><br><br>
+                                            
+                            Name:  CHAN KAM SHING<br>
+                            Attendance rate:60%<br>
+                            Absents record:50<br>
+                            Sick leave record:34<br>
+                            Late record:25<br><br><br>
+                        </div>  
+                        <div style="display: inline-block;">
+                            Name:  CHAN KING<br>
+                            Attendance rate:62%<br>
+                            Absents record:54<br>
+                            Sick leave record:5<br>
+                            Late record:26<br><br><br>
+                                        
+                            Name:  CHAN MEI SIM<br>
+                            Attendance rate:70%<br>
+                            Absents record:61<br>
+                            Sick leave record:4<br>
+                            Late record:39<br><br><br>
+                                            
+                            Name:  AU YEE WAN<br>
+                            Attendance rate:80%<br>
+                            Absents record:20<br>
+                            Sick leave record:2<br>
+                            Late record:42<br><br><br>
+                                            
+                            Name:  Lee Hak kan<br>
+                            Attendance rate:72%<br>
+                            Absents record:15<br>
+                            Sick leave record:7<br>
+                            Late record:46<br><br><br>
+                        </div> 
+                        <div style="display: inline-block;">
+                            Name:  Chan Kong sang<br>
+                            Attendance rate:77%<br>
+                            Absents record:13<br>
+                            Sick leave record:25<br>
+                            Late record:37<br><br><br>
+                                            
+                            Name:  Tony Wong<br>
+                            Attendance rate:83%<br>
+                            Absents record:9<br>
+                            Sick leave record:33<br>
+                            Late record:25<br><br><br>
+                                            
+                            Name:  Tony Leung<br>
+                            Attendance rate:90%<br>
+                            Absents record:8<br>
+                            Sick leave record:41<br>
+                            Late record:60<br><br><br>
+                                            
+                            Name:  Chow Yun-fat<br>
+                            Attendance rate:100%<br>
+                            Absents record:0<br>
+                            Sick leave record:0<br>
+                            Late record:0<br><br><br>
+                        </div> 
+                        <div style="display: inline-block;">
+                            
+                            Name:  Maggie Cheung<br>
+                            
+                            Attendance rate:70%<br>
+                            Absents record:18<br>
+                            Sick leave record:6<br>
+                            Late record:80<br><br><br>
+                                            
+                            Name:  Stephen Chow<br>
+                            Attendance rate:80%<br>
+                            Absents record:10<br>
+                            Sick leave record:20<br>
+                            Late record:42<br><br><br>
+                                            
+                            Name:  Anita Mui<br>
+                            Attendance rate:82%<br>
+                            Absents record:12<br>
+                            Sick leave record:30<br>
+                            Late record:48<br><br><br>
+                                            
+                            Name:  Andy Lau<br>
+                            Attendance rate:78%<br>
+                            Absents record:16<br>
+                            Sick leave record:8<br>
+                            Late record:40<br><br><br>
+                            
+                        </div> 
+                        <div>
+                            Name:  Aaron Kwok<br>
+                            Attendance rate:88%<br>
+                            Absents record:12<br>
+                            Sick leave record:10<br>
+                            Late record:40<br>
+                        </div>
+                            
+                    </div>
+            
+               <br>
+                        <button class="yes">OK</button>
+                    </div>
+                     <input type="button" value="Generate all year reports" onclick="functionAlert();" />
+                <div id="confirm1819">
+                    <div class = "message1819">
+                        
+                        <div style="display: inline-block;">
+                            2018-2019 school reports<br><br><br>
+                            Name:  Tsang Fung<br>
+                            Attendance rate:43%<br>
+                            Absents record:80<br>
+                            Sick leave record:23<br>
+                            Late record:46<br><br><br>
+                                
+                        </div>  
+                        <div style="display: inline-block;">
+                            
+                            Name:  Tsang Man<br>
+                            Attendance rate:43%<br>
+                            Absents record:80<br>
+                            Sick leave record:23<br>
+                            Late record:34<br><br><br>
+                                
+                        </div> 
+                        <div style="display: inline-block;">
+                            
+                            Name:  chung tsz<br>
+                            Attendance rate:40%<br>
+                            Absents record:80<br>
+                            Sick leave record:3<br>
+                            Late record:4<br><br><br>
+                                
+                        </div> 
+                        <div style="display: inline-block;">
+                            
+                            Name:  hi tsz<br>
+                            Attendance rate:33%<br>
+                            Absents record:90<br>
+                            Sick leave record:23<br>
+                            Late record:64<br><br><br>
+                                
+                        </div> 
+                        <div style="display: inline-block;">
+                            
+                            Name:  lee man<br>
+                            Attendance rate:83%<br>
+                            Absents record:8<br>
+                            Sick leave record:2<br>
+                            Late record:3<br><br><br>
+                                
+                        </div> 
+                            
+                    </div>
+            
+               <br>
+                        <button class="yes">OK</button>
+                    </div>
+                     <input type="button" value="Generate this year report" onclick="functionAlert1819();" />
+                </div>
+                <div id="sd1920">
+                    <table width="100%" class="display" id="ta4" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Detail</th>
+                                <th></th>
+                                <th>Account Number</th>
+                                <th>Name</th>
+                                <th>Password</th>
+                                <th>Class</th>
+                                <th>Phone Number</th>
+                                <th>Sex</th>
+                                <th>Birth</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Detail</th>
+                                <th></th>
+                                <th>Account Number</th>
+                                <th>Name</th>
+                                <th>Password</th>
+                                <th>Class</th>
+                                <th>Phone Number</th>
+                                <th>Sex</th>
+                                <th>Birth</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div id="confirm1">
+                        <div class = "message1">
+                            <div style="display: inline-block;">
+                                2018-2019 school reports<br><br><br>
+                                Name:  Tsang Fung<br>
+                                Attendance rate:43%<br>
+                                Absents record:80<br>
+                                Sick leave record:23<br>
+                                Late record:46<br><br><br>
+                                    
+                            </div>  
+                            <div style="display: inline-block;">
+                                
+                                Name:  Tsang Man<br>
+                                Attendance rate:43%<br>
+                                Absents record:80<br>
+                                Sick leave record:23<br>
+                                Late record:34<br><br><br>
+                                    
+                            </div> 
+                            <div style="display: inline-block;">
+                                
+                                Name:  chung tsz<br>
+                                Attendance rate:40%<br>
+                                Absents record:80<br>
+                                Sick leave record:3<br>
+                                Late record:4<br><br><br>
+                                    
+                            </div> 
+                            <div style="display: inline-block;">
+                                
+                                Name:  hi tsz<br>
+                                Attendance rate:33%<br>
+                                Absents record:90<br>
+                                Sick leave record:23<br>
+                                Late record:64<br><br><br>
+                                    
+                            </div> 
+                            <div style="display: inline-block;">
+                                
+                                Name:  lee man<br>
+                                Attendance rate:83%<br>
+                                Absents record:8<br>
+                                Sick leave record:2<br>
+                                Late record:3<br><br><br>
+                                    
+                            </div>
+                            <div style="display: inline-block;">
+                                2019-2020 school reports<br><br><br>
+                                Name:  yan Klein<br>
+                                Attendance rate:43%<br>
+                                Absents record:60<br>
+                                Sick leave record:63<br>
+                                Late record:4<br><br><br>
+                                    
+                            </div>  
+                            <div style="display: inline-block;">
+                                
+                                Name:  Baker fun<br>
+                                Attendance rate:63%<br>
+                                Absents record:10<br>
+                                Sick leave record:23<br>
+                                Late record:14<br><br><br>
+                                    
+                            </div> 
+                            <div style="display: inline-block;">
+                                
+                                Name:  chung Patel<br>
+                                Attendance rate:33%<br>
+                                Absents record:80<br>
+                                Sick leave record:3<br>
+                                Late record:64<br><br><br>
+                                    
+                            </div> 
+                            <div style="display: inline-block;">
+                                
+                                Name:  Dopey tsz<br>
+                                Attendance rate:90%<br>
+                                Absents record:0<br>
+                                Sick leave record:3<br>
+                                Late record:4<br><br><br>
+                                    
+                            </div> 
+                            <div style="display: inline-block;">
+                                
+                                Name:  lee Nala<br>
+                                Attendance rate:33%<br>
+                                Absents record:80<br>
+                                Sick leave record:3<br>
+                                Late record:64<br><br><br>
+                                    
+                            </div> 
+                            
+                            <div style="display: inline-block;">
+                                2020-2021 school reports<br><br><br>
+                                Name:  Tsang Tsz Fung<br>
+                                Attendance rate:43%<br>
+                                Absents record:80<br>
+                                Sick leave record:23<br>
+                                Late record:64<br><br><br>
+                                                
+                                Name:  Tsang Ho Man<br>
+                                Attendance rate:43%<br>
+                                Absents record:80<br>
+                                Sick leave record:23<br>
+                                Late record:46<br><br><br>
+                                                
+                                Name:  Xu Shang Chi<br>
+                                Attendance rate:86%<br>
+                                Absents record:83<br>
+                                Sick leave record:24<br>
+                                Late record:53<br><br><br>
+                                                
+                                Name:  CHAN KAM SHING<br>
+                                Attendance rate:60%<br>
+                                Absents record:50<br>
+                                Sick leave record:34<br>
+                                Late record:25<br><br><br>
+                            </div>  
+                            <div style="display: inline-block;">
+                                Name:  CHAN KING<br>
+                                Attendance rate:62%<br>
+                                Absents record:54<br>
+                                Sick leave record:5<br>
+                                Late record:26<br><br><br>
+                                            
+                                Name:  CHAN MEI SIM<br>
+                                Attendance rate:70%<br>
+                                Absents record:61<br>
+                                Sick leave record:4<br>
+                                Late record:39<br><br><br>
+                                                
+                                Name:  AU YEE WAN<br>
+                                Attendance rate:80%<br>
+                                Absents record:20<br>
+                                Sick leave record:2<br>
+                                Late record:42<br><br><br>
+                                                
+                                Name:  Lee Hak kan<br>
+                                Attendance rate:72%<br>
+                                Absents record:15<br>
+                                Sick leave record:7<br>
+                                Late record:46<br><br><br>
+                            </div> 
+                            <div style="display: inline-block;">
+                                Name:  Chan Kong sang<br>
+                                Attendance rate:77%<br>
+                                Absents record:13<br>
+                                Sick leave record:25<br>
+                                Late record:37<br><br><br>
+                                                
+                                Name:  Tony Wong<br>
+                                Attendance rate:83%<br>
+                                Absents record:9<br>
+                                Sick leave record:33<br>
+                                Late record:25<br><br><br>
+                                                
+                                Name:  Tony Leung<br>
+                                Attendance rate:90%<br>
+                                Absents record:8<br>
+                                Sick leave record:41<br>
+                                Late record:60<br><br><br>
+                                                
+                                Name:  Chow Yun-fat<br>
+                                Attendance rate:100%<br>
+                                Absents record:0<br>
+                                Sick leave record:0<br>
+                                Late record:0<br><br><br>
+                            </div> 
+                            <div style="display: inline-block;">
+                                
+                                Name:  Maggie Cheung<br>
+                                
+                                Attendance rate:70%<br>
+                                Absents record:18<br>
+                                Sick leave record:6<br>
+                                Late record:80<br><br><br>
+                                                
+                                Name:  Stephen Chow<br>
+                                Attendance rate:80%<br>
+                                Absents record:10<br>
+                                Sick leave record:20<br>
+                                Late record:42<br><br><br>
+                                                
+                                Name:  Anita Mui<br>
+                                Attendance rate:82%<br>
+                                Absents record:12<br>
+                                Sick leave record:30<br>
+                                Late record:48<br><br><br>
+                                                
+                                Name:  Andy Lau<br>
+                                Attendance rate:78%<br>
+                                Absents record:16<br>
+                                Sick leave record:8<br>
+                                Late record:40<br><br><br>
+                                
+                            </div> 
+                            <div>
+                                Name:  Aaron Kwok<br>
+                                Attendance rate:88%<br>
+                                Absents record:12<br>
+                                Sick leave record:10<br>
+                                Late record:40<br>
+                            </div>
+                                
+                        </div>
+                
+                   <br>
+                            <button class="yes">OK</button>
+                        </div>
+                         <input type="button" value="Generate all year reports" onclick="functionAlert1();" />
+                    <div id="confirm1920">
+                        <div class = "message1920">
+                            
+                            <div style="display: inline-block;">
+                                2019-2020 school reports<br><br><br>
+                                Name:  yan Klein<br>
+                                Attendance rate:43%<br>
+                                Absents record:60<br>
+                                Sick leave record:63<br>
+                                Late record:4<br><br><br>
+                                    
+                            </div>  
+                            <div style="display: inline-block;">
+                                
+                                Name:  Baker fun<br>
+                                Attendance rate:63%<br>
+                                Absents record:10<br>
+                                Sick leave record:23<br>
+                                Late record:14<br><br><br>
+                                    <!--Author: Tsang Ho Man 26/11/2021-->
+                            </div> 
+                            <div style="display: inline-block;">
+                                
+                                Name:  chung Patel<br>
+                                Attendance rate:33%<br>
+                                Absents record:80<br>
+                                Sick leave record:3<br>
+                                Late record:64<br><br><br>
+                                    
+                            </div> 
+                            <div style="display: inline-block;">
+                                
+                                Name:  Dopey tsz<br>
+                                Attendance rate:90%<br>
+                                Absents record:0<br>
+                                Sick leave record:3<br>
+                                Late record:4<br><br><br>
+                                    
+                            </div> 
+                            <div style="display: inline-block;">
+                                
+                                Name:  lee Nala<br>
+                                Attendance rate:33%<br>
+                                Absents record:80<br>
+                                Sick leave record:3<br>
+                                Late record:64<br><br><br>
+                                    
+                            </div> 
+                                
+                        </div>
+                
+                   <br>
+                            <button class="yes">OK</button>
+                        </div>
+                         <input type="button" value="Generate this year report" onclick="functionAlert1920();" />
+                    </div>
+                    <div id="sd2021">
+                        <table width="100%" class="display" id="ta5" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Detail</th>
+                                    <th></th>
+                                    <th>Account Number</th>
+                                    <th>Name</th>
+                                    <th>Password</th>
+                                    <th>Class</th>
+                                    <th>Phone Number</th>
+                                    <th>Sex</th>
+                                    <th>Birth</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Detail</th>
+                                    <th></th>
+                                    <th>Account Number</th>
+                                    <th>Name</th>
+                                    <th>Password</th>
+                                    <th>Class</th>
+                                    <th>Phone Number</th>
+                                    <th>Sex</th>
+                                    <th>Birth</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    <div id="confirm2">
+                        <div class = "message2">
+                            <div style="display: inline-block;">
+                                2018-2019 school reports<br><br><br>
+                                Name:  Tsang Fung<br>
+                                Attendance rate:43%<br>
+                                Absents record:80<br>
+                                Sick leave record:23<br>
+                                Late record:46<br><br><br>
+                                    
+                            </div>  
+                            <div style="display: inline-block;">
+                                
+                                Name:  Tsang Man<br>
+                                Attendance rate:43%<br>
+                                Absents record:80<br>
+                                Sick leave record:23<br>
+                                Late record:34<br><br><br>
+                                    
+                            </div> 
+                            <div style="display: inline-block;">
+                                
+                                Name:  chung tsz<br>
+                                Attendance rate:40%<br>
+                                Absents record:80<br>
+                                Sick leave record:3<br>
+                                Late record:4<br><br><br>
+                                    
+                            </div> 
+                            <div style="display: inline-block;">
+                                
+                                Name:  hi tsz<br>
+                                Attendance rate:33%<br>
+                                Absents record:90<br>
+                                Sick leave record:23<br>
+                                Late record:64<br><br><br>
+                                    
+                            </div> 
+                            <div style="display: inline-block;">
+                                
+                                Name:  lee man<br>
+                                Attendance rate:83%<br>
+                                Absents record:8<br>
+                                Sick leave record:2<br>
+                                Late record:3<br><br><br>
+                                    
+                            </div>
+                            <div style="display: inline-block;">
+                                2019-2020 school reports<br><br><br>
+                                Name:  yan Klein<br>
+                                Attendance rate:43%<br>
+                                Absents record:60<br>
+                                Sick leave record:63<br>
+                                Late record:4<br><br><br>
+                                    
+                            </div>  
+                            <div style="display: inline-block;">
+                                
+                                Name:  Baker fun<br>
+                                Attendance rate:63%<br>
+                                Absents record:10<br>
+                                Sick leave record:23<br>
+                                Late record:14<br><br><br>
+                                    
+                            </div> 
+                            <div style="display: inline-block;">
+                                
+                                Name:  chung Patel<br>
+                                Attendance rate:33%<br>
+                                Absents record:80<br>
+                                Sick leave record:3<br>
+                                Late record:64<br><br><br>
+                                    
+                            </div> 
+                            <div style="display: inline-block;">
+                                
+                                Name:  Dopey tsz<br>
+                                Attendance rate:90%<br>
+                                Absents record:0<br>
+                                Sick leave record:3<br>
+                                Late record:4<br><br><br>
+                                    
+                            </div> 
+                            <div style="display: inline-block;">
+                                
+                                Name:  lee Nala<br>
+                                Attendance rate:33%<br>
+                                Absents record:80<br>
+                                Sick leave record:3<br>
+                                Late record:64<br><br><br>
+                                    
+                            </div> 
+                            
+                            <div style="display: inline-block;">
+                                2020-2021 school reports<br><br><br>
+                                Name:  Tsang Tsz Fung<br>
+                                Attendance rate:43%<br>
+                                Absents record:80<br>
+                                Sick leave record:23<br>
+                                Late record:64<br><br><br>
+                                                
+                                Name:  Tsang Ho Man<br>
+                                Attendance rate:43%<br>
+                                Absents record:80<br>
+                                Sick leave record:23<br>
+                                Late record:46<br><br><br>
+                                                
+                                Name:  Xu Shang Chi<br>
+                                Attendance rate:86%<br>
+                                Absents record:83<br>
+                                Sick leave record:24<br>
+                                Late record:53<br><br><br>
+                                                
+                                Name:  CHAN KAM SHING<br>
+                                Attendance rate:60%<br>
+                                Absents record:50<br>
+                                Sick leave record:34<br>
+                                Late record:25<br><br><br>
+                            </div>  
+                            <div style="display: inline-block;">
+                                Name:  CHAN KING<br>
+                                Attendance rate:62%<br>
+                                Absents record:54<br>
+                                Sick leave record:5<br>
+                                Late record:26<br><br><br>
+                                            
+                                Name:  CHAN MEI SIM<br>
+                                Attendance rate:70%<br>
+                                Absents record:61<br>
+                                Sick leave record:4<br>
+                                Late record:39<br><br><br>
+                                                
+                                Name:  AU YEE WAN<br>
+                                Attendance rate:80%<br>
+                                Absents record:20<br>
+                                Sick leave record:2<br>
+                                Late record:42<br><br><br>
+                                                
+                                Name:  Lee Hak kan<br>
+                                Attendance rate:72%<br>
+                                Absents record:15<br>
+                                Sick leave record:7<br>
+                                Late record:46<br><br><br>
+                            </div> 
+                            <div style="display: inline-block;">
+                                Name:  Chan Kong sang<br>
+                                Attendance rate:77%<br>
+                                Absents record:13<br>
+                                Sick leave record:25<br>
+                                Late record:37<br><br><br>
+                                                
+                                Name:  Tony Wong<br>
+                                Attendance rate:83%<br>
+                                Absents record:9<br>
+                                Sick leave record:33<br>
+                                Late record:25<br><br><br>
+                                                
+                                Name:  Tony Leung<br>
+                                Attendance rate:90%<br>
+                                Absents record:8<br>
+                                Sick leave record:41<br>
+                                Late record:60<br><br><br>
+                                                
+                                Name:  Chow Yun-fat<br>
+                                Attendance rate:100%<br>
+                                Absents record:0<br>
+                                Sick leave record:0<br>
+                                Late record:0<br><br><br>
+                            </div> 
+                            <div style="display: inline-block;">
+                                
+                                Name:  Maggie Cheung<br>
+                                
+                                Attendance rate:70%<br>
+                                Absents record:18<br>
+                                Sick leave record:6<br>
+                                Late record:80<br><br><br>
+                                                
+                                Name:  Stephen Chow<br>
+                                Attendance rate:80%<br>
+                                Absents record:10<br>
+                                Sick leave record:20<br>
+                                Late record:42<br><br><br>
+                                                
+                                Name:  Anita Mui<br>
+                                Attendance rate:82%<br>
+                                Absents record:12<br>
+                                Sick leave record:30<br>
+                                Late record:48<br><br><br>
+                                                
+                                Name:  Andy Lau<br>
+                                Attendance rate:78%<br>
+                                Absents record:16<br>
+                                Sick leave record:8<br>
+                                Late record:40<br><br><br>
+                                
+                            </div> 
+                            <div>
+                                Name:  Aaron Kwok<br>
+                                Attendance rate:88%<br>
+                                Absents record:12<br>
+                                Sick leave record:10<br>
+                                Late record:40<br>
+                            </div>
+                                
+                        </div>
+                
+                   <br>
+                            <button class="yes">OK</button>
+                        </div>
+                         <input type="button" value="Generate all year reports" onclick="functionAlert2();" />
+                         <div id="confirm2021">
+                            <div class = "message2021">
+                                
+                                <div style="display: inline-block;">
+                                    2020-2021 school reports<br><br><br>
+                                    Name:  Tsang Tsz Fung<br>
+                                    Attendance rate:43%<br>
+                                    Absents record:80<br>
+                                    Sick leave record:23<br>
+                                    Late record:64<br><br><br>
+                                                    
+                                    Name:  Tsang Ho Man<br>
+                                    Attendance rate:43%<br>
+                                    Absents record:80<br>
+                                    Sick leave record:23<br>
+                                    Late record:46<br><br><br>
+                                                    
+                                    Name:  Xu Shang Chi<br>
+                                    Attendance rate:86%<br>
+                                    Absents record:83<br>
+                                    Sick leave record:24<br>
+                                    Late record:53<br><br><br>
+                                                    
+                                    Name:  CHAN KAM SHING<br>
+                                    Attendance rate:60%<br>
+                                    Absents record:50<br>
+                                    Sick leave record:34<br>
+                                    Late record:25<br><br><br>
+                                </div>  
+                                <div style="display: inline-block;">
+                                    Name:  CHAN KING<br>
+                                    Attendance rate:62%<br>
+                                    Absents record:54<br>
+                                    Sick leave record:5<br>
+                                    Late record:26<br><br><br>
+                                                
+                                    Name:  CHAN MEI SIM<br>
+                                    Attendance rate:70%<br>
+                                    Absents record:61<br>
+                                    Sick leave record:4<br>
+                                    Late record:39<br><br><br>
+                                                    
+                                    Name:  AU YEE WAN<br>
+                                    Attendance rate:80%<br>
+                                    Absents record:20<br>
+                                    Sick leave record:2<br>
+                                    Late record:42<br><br><br>
+                                                    
+                                    Name:  Lee Hak kan<br>
+                                    Attendance rate:72%<br>
+                                    Absents record:15<br>
+                                    Sick leave record:7<br>
+                                    Late record:46<br><br><br>
+                                </div> 
+                                <div style="display: inline-block;">
+                                    Name:  Chan Kong sang<br>
+                                    Attendance rate:77%<br>
+                                    Absents record:13<br>
+                                    Sick leave record:25<br>
+                                    Late record:37<br><br><br>
+                                                    
+                                    Name:  Tony Wong<br>
+                                    Attendance rate:83%<br>
+                                    Absents record:9<br>
+                                    Sick leave record:33<br>
+                                    Late record:25<br><br><br>
+                                                    
+                                    Name:  Tony Leung<br>
+                                    Attendance rate:90%<br>
+                                    Absents record:8<br>
+                                    Sick leave record:41<br>
+                                    Late record:60<br><br><br>
+                                                    
+                                    Name:  Chow Yun-fat<br>
+                                    Attendance rate:100%<br>
+                                    Absents record:0<br>
+                                    Sick leave record:0<br>
+                                    Late record:0<br><br><br>
+                                </div> 
+                                <div style="display: inline-block;">
+                                    
+                                    Name:  Maggie Cheung<br>
+                                    
+                                    Attendance rate:70%<br>
+                                    Absents record:18<br>
+                                    Sick leave record:6<br>
+                                    Late record:80<br><br><br>
+                                                    <!--Author: Tsang Ho Man 26/11/2021-->
+                                    Name:  Stephen Chow<br>
+                                    Attendance rate:80%<br>
+                                    Absents record:10<br>
+                                    Sick leave record:20<br>
+                                    Late record:42<br><br><br>
+                                                    
+                                    Name:  Anita Mui<br>
+                                    Attendance rate:82%<br>
+                                    Absents record:12<br>
+                                    Sick leave record:30<br>
+                                    Late record:48<br><br><br>
+                                                    
+                                    Name:  Andy Lau<br>
+                                    Attendance rate:78%<br>
+                                    Absents record:16<br>
+                                    Sick leave record:8<br>
+                                    Late record:40<br><br><br>
+                                    
+                                </div> 
+                                <div>
+                                    Name:  Aaron Kwok<br>
+                                    Attendance rate:88%<br>
+                                    Absents record:12<br>
+                                    Sick leave record:10<br>
+                                    Late record:40<br>
+                                </div>
+                                    
+                            </div>
+                    
+                       <br>
+                                <button class="yes">OK</button>
+                            </div>
+                             <input type="button" value="Generate this year report" onclick="functionAlert2021();" />
+                        </div>
+                        
+                        <div id="EditClass">
+                            <form id="formSD" class="formSD">
+                            <div id="form3">
+                                
+                                <label for="Class">Class</label><br>
+                                <input class="re" list="Classlist" type="text" id="Class" name="Class" onchange="castvote()" required/><br>
+                                <datalist id="Classlist">
+                                    
+                                    <option label="4A" value="4A" />
+                                    <option label="5A" value="5A" />
+                                    <option label="6D" value="6D" />
+                                </datalist>
+                                <label for="Total">Total Student</label><br>
+                                <input type="number" id="Total" placeholder="01" min="1" max="40" disabled required><br>
+                                <label for="Language">Teaching Language</label><br>
+                                <input class="re" list="Languagelist" type="text" id="Language" name="Language" disabled required/><br>
+                                <datalist id="Languagelist">
+                                    
+                                    <option label="Chinese" value="Chinese" />
+                                    <option label="English" value="English" />
+                                    
+                                </datalist>
+                                <label for="Method">Teaching Method</label><br>
+                                <input class="re" list="Methodlist" type="text" id="Method" name="Method" disabled required/><br>
+                                <datalist id="Methodlist">
+                                    
+                                    <option label="face-to-face" value="face-to-face" />
+                                    <option label="Online" value="Online" />
+                                    
+                                </datalist>
+                                <label for="txtDate_start">Start Date</label><br>
+                                <input type="date" class="re" id="txtDate_start" value="2021-10-20" min="2021-10-20" disabled><br>
+                                <label for="txtDate_end">End Date</label><br>
+                                <input type="date" class="re" id="txtDate_end" value="2022-07-01" min="2021-10-21" disabled><br>
+                                </div>
+                            <!--Author: Tsang Ho Man 26/11/2021-->
+                            <input type="submit" onclick="Save()" value="Save"/> 
+                            
+                            </form>
+                            <input type="submit" onclick="Remove()" value="Remove"/> 
+                            </div> 
+                            
+                            </div>
+                        </div>
+                
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/select/1.2.1/js/dataTables.select.min.js" type="text/javascript"></script>
+ 
+
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
+
+
+

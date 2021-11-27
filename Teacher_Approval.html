@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<head>
+    <title>Innovative Secondary school Teacher Page</title>
+    <link rel="stylesheet" href="CSS/StyleTeacher.css">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/INS_LOGO.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/INS_LOGO.png">
+    <link rel="stylesheet" href="CSS/munu.css">
+    <link rel="stylesheet" href="CSS/header-user-dropdown.css">
+    <link rel="stylesheet" href="CSS/header-second-bar.css">
+    <link rel="stylesheet" href="CSS/StyleSearch.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/1bbc27f950.js" crossorigin="anonymous"></script>
+  
+    <!--Author: 26/11/2021 Tsang Tsz Fung-->
+    <script src="jslib\jquery-1.11.1.js"></script>
+    <script>
+    $(document).ready(function(){
+
+
+        function updateTime() {
+      var dateInfo = new Date();
+    
+      /* time */
+      var hr,
+        _min = (dateInfo.getMinutes() < 10) ? "0" + dateInfo.getMinutes() : dateInfo.getMinutes(),
+        sec = (dateInfo.getSeconds() < 10) ? "0" + dateInfo.getSeconds() : dateInfo.getSeconds(),
+        ampm = (dateInfo.getHours() >= 12) ? "PM" : "AM";
+    
+      // replace 0 with 12 at midnight, subtract 12 from hour if 13–23
+      if (dateInfo.getHours() == 0) {
+        hr = 12;
+      } else if (dateInfo.getHours() > 12) {
+        hr = dateInfo.getHours() - 12;
+      } else {
+        hr = dateInfo.getHours();
+      }
+    
+      var currentTime = hr + ":" + _min + ":" + sec;
+    
+      // print time
+      document.getElementsByClassName("hms")[0].innerHTML = currentTime;
+      document.getElementsByClassName("ampm")[0].innerHTML = ampm;
+    
+      /* date */
+      var dow = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        month = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+        ],
+        day = dateInfo.getDate();
+    
+      // store date
+      var currentDate = dow[dateInfo.getDay()] + ", " + month[dateInfo.getMonth()] + " " + day;
+    
+      document.getElementsByClassName("date")[0].innerHTML = currentDate;
+    };
+    
+    // print time and date once, then update them every second
+    updateTime();
+    setInterval(function() {
+      updateTime()
+    }, 1000);
+        });    
+    </script>
+</head>
+    <body>
+
+
+      <header class="header-user-dropdown"> 
+    <div class="header-two-bars">
+
+	<div class="header-first-bar">
+
+		<div class="header-limiter">
+
+            <h1 class="animate__animated animate__backInLeft callout-title"><a href="Teacher.html">Innovative<span>SecondarySchool</span></a></h1>
+			<nav>
+				<a href="Teacher.html" >Main</a>
+				<a href="Teacher_CreateClass.html">Create Class</a>
+				<a href="Teacher_Approval.html" class="selected">Approvement</a>
+			</nav>
+            
+            <div class="header-user-menu">
+                <img src="img/Lun.jpg" alt="User Image"/>
+                <ul>
+                  <li class="reset-this"><a href="Teacher.html">Main</a></li>
+                  <li class="reset-this"><a href="Teacher_Myclass.html">My Class</a></li>
+                  <li class="reset-this"><a href="Login.html" class="highlight">Logout</a></li>
+              </ul>
+            </div>
+			<a href="Login.html" class="logout-button">Logout</a>
+      <span class="hms"></span>
+      <span class="ampm"></span>
+      <br>
+      <span class="date"></span>
+           
+		</div>
+
+	</div>
+
+	<div class="header-second-bar">
+
+		<div class="header-limiter">
+			<h2>Welcome, Au Wai Lun</h2>
+
+			<nav>
+				<a href="Teacher_Myclass.html"><i class="fas fa-chalkboard-teacher"></i>&nbsp;My Class</a>&nbsp;&nbsp;&nbsp;
+				<a href="Teacher_Profile.html"><i class="fas fa-user"></i> Profile</a>
+				<a href="Teacher_Search.html"><i class="fa fa-users"></i>Search Student</a>
+			</nav>
+		</div>
+
+	</div>
+</div>
+</header>
+<br>
+<div class="row"><!--Author: 26/11/2021 Tsang Tsz Fung-->
+  <div class="col-lg-12 card-margin">
+    <div class="d-flex justify-content-center ">
+      <a href="Teacher_Approval.html" class="btn btn-outline-primary btn-sm mt-2" role="button" style="font-family:Arial;">4A</a>&nbsp;
+      <a href="Teacher_Approval_5A.html" class="btn btn-outline-primary btn-sm mt-2 " role="button" style="font-family:Arial;">5A</a>&nbsp;
+      <a href="Teacher_Approval_6D.html" class="btn btn-outline-primary btn-sm mt-2" role="button" style="font-family:Arial;">6D</a>
+    </div>
+    <br>
+        <div  class="d-flex justify-content-center row" >
+            <div class="col-md-10">
+              <div class="row p-2 bg-white border rounded" id="RowShing">
+                <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded class-image"  style="width: 250px; height: 250px;"src="img/Shang-Chi.jpg"></div>
+                  <div class="col-md-6 mt-1">
+                      <br>
+                      <h4>Student Name: <span class="text-primary">Xu Shang-Chi Shaun</span></h4>
+                        <h4>Supporting Document: <span class="text-primary">Submited</span></h4>
+                        <h4>Class: <span class="text-primary">4A</span></h4>
+                        <br>
+                        <h3>Remark:  <span class="text-danger">None</span></h3>
+                  </div>
+                    <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                        <div class="d-flex flex-row align-items-center">
+                          <h1 class="mr-1" style="color: rebeccapurple; ">Reason:&nbsp;Sick Leave</h1>
+                        </div>
+                        <div class="d-flex flex-column mt-2">
+                          <h2 class="mr-1" style="font-family:Arial;color: rebeccapurple;"><i class="far fa-calendar fa-1x"></i> Date:&nbsp; 17/11/2021</h2>
+                          <div class="d-flex flex-column mt-4">
+                            <a href="img/Medical-Leave-Letter-Example.jpg" class="btn btn-sm btn-info" role="button">Download</a>
+                            <button type="button" class="btn btn-warning btn-sm mt-2" onclick="Approve1()" >Approve</button>
+                            <button type="button" class="btn btn-outline-danger btn-sm mt-2" onclick="Approve1()" >Reject</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row p-2 bg-white border rounded" id="RowShing">
+                  <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded class-image"  style="width: 250px; height: 250px;"src="img/tsz.jpg"></div>
+                    <div class="col-md-6 mt-1">
+                        <br>
+                        <h4>Student Name: <span class="text-primary">Tsang Tsz Fung</span></h4>
+                          <h4>Supporting Document: <span class="text-danger">not-submitted</span></h4>
+                          <h4>Class: <span class="text-primary">4A</span></h4>
+                          <br>
+                          <h3>Remark:  <span class="text-danger">None</span></h3>
+                    </div>
+                      <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                          <div class="d-flex flex-row align-items-center">
+                            <h1 class="mr-1" style="color: rebeccapurple; ">Reason:&nbsp;Early Leave</h1>
+                          </div>
+                          <div class="d-flex flex-column mt-2">
+                            <h2 class="mr-1" style="font-family:Arial;color: rebeccapurple;"><i class="far fa-calendar fa-1x"></i> Date:&nbsp; 12/11/2021</h2>
+                            <div class="d-flex flex-column mt-4">
+                              <button type="button" class="btn btn-sm btn-info"disabled>Download</a>
+                              <button type="button" class="btn btn-warning btn-sm mt-2"  disabled>Approve</button>
+                              <button type="button" class="btn btn-outline-danger btn-sm mt-2" >Reject</button>
+                          </div>
+                          </div>
+                      </div><!--Author: 26/11/2021 Tsang Tsz Fung-->
+                  </div>
+                  <br>
+                <div class="row p-2 bg-white border rounded" id="RowHo">
+                  <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded class-image"  style="width: 250px; height: 250px;"src="img/Ho.jpg"></div>
+                    <div class="col-md-6 mt-1">
+                        <br>
+                        <h4>Student Name: <span class="text-primary">Tsang Ho Man</span></h4>
+                        <h4>Supporting Document: <span class="text-primary">Submited</span></h4>
+                        <h4>Class: <span class="text-primary">4A</span></h4>
+                          <br>
+                          <h3>Remark:  <span class="text-warning">he claim that he was kicked by a llama and suffered a broken leg as a result</span></h3>
+                    </div>
+                      <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                          <div class="d-flex flex-row align-items-center">
+                            <h1 class="mr-1" style="color: rebeccapurple; ">Reason:&nbsp;Sick Leave</h1>
+                          </div>
+                          <div class="d-flex flex-column mt-2">
+                            <h2 class="mr-1" style="font-family:Arial;color: rebeccapurple;"><i class="far fa-calendar fa-1x"></i> Date:&nbsp; 14/11/2021</h2>
+                            <div class="d-flex flex-column mt-4">
+                              <a href="img/Medical-Leave-Letter-Example.jpg" class="btn btn-sm btn-info" role="button" >Download</a>
+                              <button type="button" class="btn btn-warning btn-sm mt-2" onclick="Approve2()" >Approve</button>
+                              <button type="button" class="btn btn-outline-danger btn-sm mt-2" onclick="Approve2()" >Reject</button>
+
+                          </div>
+                          </div>
+                      </div>
+                  </div>
+            </div>
+        </div>
+        
+  </div>
+</div>
+
+
+<script>  
+
+
+function Approve1(){
+          if (confirm('Are you sure you want to approve/reject reason?')) {
+          //alert("Done");
+          document.getElementById("RowShing").style.display = "none";
+
+        } else {
+
+        }
+      }
+
+      function Approve2(){
+          if (confirm('Are you sure you want to approve reason?')) {
+          //alert("Done");
+          document.getElementById("RowHo").style.display = "none";
+
+        } else {
+
+        }
+      }
+
+</script>
+
+</body>
+</html>

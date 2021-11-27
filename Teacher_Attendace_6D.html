@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<head>
+  <title>Innovative Secondary school Teacher Page</title>
+  <link rel="stylesheet" href="CSS/StyleTeacher.css">
+  <link rel="stylesheet" href="CSS/Main_Page.css">
+  <script src="jslib\jquery-1.11.1.js"></script>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/TableStyle.css">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/INS_LOGO.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/INS_LOGO.png">
+  <link rel="stylesheet" href="CSS/munu.css">
+  <link rel="stylesheet" href="CSS/header-user-dropdown.css">
+  <link rel="stylesheet" href="CSS/header-second-bar.css">
+  <link rel="stylesheet" href="CSS/StyleSearch.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>        
+  <script src="https://kit.fontawesome.com/1bbc27f950.js" crossorigin="anonymous"></script>
+<!--Author: 26/11/2021 Tsang Tsz Fung-->
+
+  <script>
+  $(document).ready(function(){
+    
+    $('#Reset').click(function() {
+      $("#n1").prop("hidden", !this.checked);
+      $("#n2").prop("hidden", !this.checked);
+      $("#n3").prop("hidden", !this.checked);
+      $("#n4").prop("hidden", !this.checked);
+      $("#n5").prop("hidden", !this.checked);
+      $("#output1").empty();
+      $("#output2").empty();
+      $("#output3").empty();
+      $("#output4").empty();
+      $("#output5").empty();
+    })
+    
+
+
+      function updateTime() {
+    var dateInfo = new Date();
+  
+    /* time */
+    var hr,
+      _min = (dateInfo.getMinutes() < 10) ? "0" + dateInfo.getMinutes() : dateInfo.getMinutes(),
+      sec = (dateInfo.getSeconds() < 10) ? "0" + dateInfo.getSeconds() : dateInfo.getSeconds(),
+      ampm = (dateInfo.getHours() >= 12) ? "PM" : "AM";
+  
+    // replace 0 with 12 at midnight, subtract 12 from hour if 13–23
+    if (dateInfo.getHours() == 0) {
+      hr = 12;
+    } else if (dateInfo.getHours() > 12) {
+      hr = dateInfo.getHours() - 12;
+    } else {
+      hr = dateInfo.getHours();
+    }
+    //hr = "7"; ampm="AM"; 
+    //For Test
+    var currentTime = hr + ":" + _min + ":" + sec;
+  
+    // print time
+    document.getElementsByClassName("hms")[0].innerHTML = currentTime;
+    document.getElementsByClassName("ampm")[0].innerHTML = ampm;
+    
+    if(hr == 8 && ampm == "AM"|| hr == 9 && ampm == "AM"){
+      document.getElementById("hms").style.color = "red";
+    }
+
+    /* date */
+    var dow = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      month = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ],
+      day = dateInfo.getDate();
+  
+    // store date
+    var currentDate = dow[dateInfo.getDay()] + ", " + month[dateInfo.getMonth()] + " " + day;
+  
+    document.getElementsByClassName("date")[0].innerHTML = currentDate;
+
+    var ClassStatus = "";
+
+    if(hr == 6 && ampm == "AM"|| hr == 7 && ampm == "AM"){
+    ClassStatus = "&nbsp;On Time&nbsp;";
+    document.getElementsByClassName("Status")[0].style.color = "blue";
+    document.getElementsByClassName("Status")[0].style.backgroundColor = "yellow";
+    }else{
+      ClassStatus = "&nbsp;Late&nbsp;";
+      document.getElementsByClassName("Status")[0].style.color = "white";
+      document.getElementsByClassName("Status")[0].style.backgroundColor = "red";
+    }
+
+    document.getElementsByClassName("Status")[0].innerHTML = ClassStatus;
+
+    
+
+  };
+  var rad = document.mainform.fav_1;
+  var prev = null;
+  for (var i = 0; i < rad.length; i++) {
+      rad[i].addEventListener('change', function() {
+          (prev) ? console.log(prev.value): null;
+          if (this !== prev) {
+              prev = this;
+          }
+          var output1 = document.getElementById('output1');
+      
+          output1.innerHTML = prev.value  ;
+          document.getElementById("n1").removeAttribute("hidden");
+          
+      });
+  }
+  var rad2 = document.mainform.fav_2;
+  var prev2 = null;
+  for (var i = 0; i < rad2.length; i++) {
+      rad2[i].addEventListener('change', function() {
+          (prev2) ? console.log(prev2.value): null;
+          if (this !== prev2) {
+              prev2 = this;
+          }
+          var output2 = document.getElementById('output2');
+      
+          output2.innerHTML = prev2.value  ;
+          document.getElementById("n2").removeAttribute("hidden");
+      });
+  }
+  var rad3 = document.mainform.fav_3;
+  var prev3 = null;
+  for (var i = 0; i < rad3.length; i++) {
+      rad3[i].addEventListener('change', function() {
+          (prev3) ? console.log(prev3.value): null;
+          if (this !== prev3) {
+              prev3 = this;
+          }
+          var output3 = document.getElementById('output3');
+      
+          output3.innerHTML = prev3.value  ;
+          document.getElementById("n3").removeAttribute("hidden");
+      });
+  }
+  var rad4 = document.mainform.fav_4;
+  var prev4 = null;
+  for (var i = 0; i < rad4.length; i++) {
+      rad4[i].addEventListener('change', function() {
+          (prev4) ? console.log(prev4.value): null;
+          if (this !== prev4) {
+              prev4 = this;
+          }
+          var output4 = document.getElementById('output4');
+      
+          output4.innerHTML = prev4.value  ;
+          document.getElementById("n4").removeAttribute("hidden");
+      });
+  }
+  var rad5 = document.mainform.fav_5;
+    var prev5 = null;
+    for (var i = 0; i < rad5.length; i++) {
+        rad5[i].addEventListener('change', function() {
+            (prev5) ? console.log(prev5.value): null;
+            if (this !== prev5) {
+                prev5 = this;
+            }
+            var output5 = document.getElementById('output5');
+        
+            output5.innerHTML = prev5.value  ;
+            document.getElementById("n5").removeAttribute("hidden");
+        });
+    }
+  function clearResult(){
+    document.getElementById("n1").setAttribute("hidden");
+  }
+  // print time and date once, then update them every second
+  updateTime();
+  setInterval(function() {
+    updateTime()
+  }, 1000);
+      });    
+  </script>
+<style>
+.center {
+margin-left: auto;
+margin-right: auto;
+}
+</style>
+
+</head>
+  <body>
+
+
+    <header class="header-user-dropdown"> 
+  <div class="header-two-bars">
+
+<div class="header-first-bar">
+
+  <div class="header-limiter">
+
+          <h1 class="animate__animated animate__backInLeft callout-title"><a href="Teacher.html">Innovative<span>SecondarySchool</span></a></h1>
+    <nav>
+      <a href="Teacher.html">Main</a>
+      <a href="Teacher_CreateClass.html">Create Class</a>
+      <a href="Teacher_Approval.html">Approvement</a>
+    </nav>
+          
+          <div class="header-user-menu">
+              <img src="img/Lun.jpg" alt="User Image"/>
+              <ul>
+                  <li class="reset-this"><a href="Teacher.html">Main</a></li>
+                  <li class="reset-this"><a href="Teacher_Myclass.html">My Class</a></li>
+                  <li class="reset-this"><a href="Login.html" class="highlight">Logout</a></li>
+              </ul>
+          </div>
+    <a href="Login.html" class="logout-button">Logout</a>
+
+         
+  </div>
+
+</div>
+
+<div class="header-second-bar">
+
+  <div class="header-limiter">
+    <h2>Welcome, Au Wai Lun</h2>
+
+    <nav>
+      <a href="Teacher_Myclass.html"><i class="fas fa-chalkboard-teacher"></i>&nbsp;My Class</a>&nbsp;&nbsp;&nbsp;
+      <a href="Teacher_Profile.html"><i class="fas fa-user"></i> Profile</a>
+      <a href="Teacher_Search.html"><i class="fa fa-users"></i> Student Search</a>
+    </nav>
+  </div>
+
+</div>
+</div>
+    </header>
+<div style="text-align: center;">
+<span class="hms" style="font-size: 100pt;" id="hms"></span>
+<span class="ampm" style="color:blue"></span>
+<br>
+<span class="date" ></span>
+<span class="Status" style=" font-size: 30px;"></span><!--Author: 26/11/2021 Tsang Tsz Fung-->
+</div>
+<!--Author: 26/11/2021 Tsang Tsz Fung-->
+</div>
+<div class="row">
+    <div class="col-lg-12 card-margin">
+      <div class="d-flex justify-content-center ">
+        <a href="Teacher_Attendace_4A.html" class="btn btn-outline-primary btn-sm mt-2" role="button" style="font-family:Arial;">4A</a>&nbsp;
+        <a href="Teacher_Attendace_5A.html" class="btn btn-outline-primary btn-sm mt-2" role="button" style="font-family:Arial;">5A</a>&nbsp;
+        <a href="Teacher_Attendace_6D.html" class="btn btn-outline-primary btn-sm mt-2" role="button" style="font-family:Arial;">6D</a>
+      </div>
+      <br>
+          <div class="d-flex justify-content-center row">
+              <div class="col-md-10">
+                <div class="row p-2 bg-white border rounded">
+                      <div class="col-md-9 mt-1">
+                        <span class="NumberOfStudent" style="color: rebeccapurple;">
+                          <i class='fas fa-user fa-2x' id="n1" hidden></i>
+                          <i class='fas fa-user fa-2x' id="n2" hidden></i>
+                          <i class='fas fa-user fa-2x' id="n3" hidden></i>
+                          <i class='fas fa-user fa-2x' id="n4" hidden></i>
+                          <i class='fas fa-user fa-2x' id="n5" hidden></i>
+                        </span>
+                      </div>
+                      <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                          <div class="d-flex flex-row align-items-center">
+                            <h1 class="mr-1" style="color: rebeccapurple; ">4A&nbsp;</h1>
+                          </div>
+                          <div class="d-flex flex-column mt-2">
+                            <h2 class="mr-1" style="font-family:Arial;color: rebeccapurple;"><label id="count"></label>/5&nbsp;<i class='fas fa-user fa-1x' ">&nbsp;</i>Student</h2>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+    </div>
+</div>
+<div class="row">
+  <div class="col-lg-12 card-margin">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-10">
+              <div class="row p-2 bg-white border rounded">
+                    <div class="col-md-12 mt-1">
+                      <table class="center">
+                        <thead>
+                            <tr>
+                                <th class="name-col">Student Name</th>
+                                <th>Present</th>
+                                <th>Late</th>
+                                <th>Early leave</th>
+                                <th>Sick Leave</th>
+                                <th>Personal leave</th>
+                                <th>Absent without reason</th>
+                                <th>Remark</th>
+                                <th class="missed-col">Current Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          
+                          <form id="mainform" name="mainform" oninput=" FirstCol.value = fav_1.value;">
+                            <tr class="student">
+                                <td class="name-col">Maggie Cheung</td>
+                                <td class="attend-col"><input type="radio" id="Present" name="fav_1" value="Present" onchange="Presentoutput1()"></td>
+                                <td class="attend-col"><input type="radio" id="Late" name="fav_1" value="Late" onchange="Lateoutput1()"></td>
+                                <td class="attend-col"><input type="radio" id="Early_Leave" name="fav_1" value="Early_Leave" onchange="Early_Leaveoutput1()"></td>
+                                <td class="attend-col"><input type="radio" id="Sick_Leave" name="fav_1" value="Sick_Leave" ></td>
+                                
+                                <td class="attend-col"><input type="radio" id="Personal_Leave" name="fav_1" value="Personal_Leave" onchange="Personal_Leaveoutput1()"></td>
+                                <td class="attend-col"><input type="radio" id="Absent_without_reason" name="fav_1" value="Absent_without_reason" ></td>
+                                
+                                <td ><input type="text"></td>
+                                <td class="missed-col" ><p id="output1">NaN</p></td>
+                            </tr>
+                            <tr class="student">
+                              <td class="name-col">Stephen Chow</td>
+                              <td class="attend-col"><input type="radio" id="Present" name="fav_2" value="Present"></td>
+                              <td class="attend-col"><input type="radio" id="Late" name="fav_2" value="Late"></td>
+                              <td class="attend-col"><input type="radio" id="Early_Leave" name="fav_2" value="Early_Leave"></td>
+                              <td class="attend-col"><input type="radio" id="Sick_Leave" name="fav_2" value="Sick_Leave" ></td>
+                              
+                              <td class="attend-col"><input type="radio" id="Personal_Leave" name="fav_2" value="Personal_Leave"></td>
+                              <td class="attend-col"><input type="radio" id="Absent_without_reason" name="fav_2" value="Absent_without_reason" ></td>
+                              <td ><input type="text"></td>
+                              <td class="missed-col"><p id="output2">NaN</p></td>
+                          </tr>
+                          <tr class="student">
+                            <td class="name-col">Anita Mui</td>
+                            <td class="attend-col"><input type="radio" id="Present" name="fav_3" value="Present"></td>
+                            <td class="attend-col"><input type="radio" id="Late" name="fav_3" value="Late"></td>
+                            <td class="attend-col"><input type="radio" id="Early_Leave" name="fav_3" value="Early_Leave"></td>
+                            <td class="attend-col"><input type="radio" id="Sick_Leave" name="fav_3" value="Sick_Leave" onchange="output1()"></td>
+                            
+                            <td class="attend-col"><input type="radio" id="Personal_Leave" name="fav_3" value="Personal_Leave"></td>
+                            <td class="attend-col"><input type="radio" id="Absent_without_reason" name="fav_3" value="Absent_without_reason" ></td>
+                            <td ><input type="text"></td>
+                            <td class="missed-col"><p id="output3">NaN</p></td>
+                        </tr>
+                        <tr class="student">
+                          <td class="name-col">Andy Lau</td>
+                          <td class="attend-col"><input type="radio" id="Present" name="fav_4" value="Present"></td>
+                          <td class="attend-col"><input type="radio" id="Late" name="fav_4" value="Late"></td>
+                          <td class="attend-col"><input type="radio" id="Early_Leave" name="fav_4" value="Early_Leave"></td>
+                          <td class="attend-col"><input type="radio" id="Sick_Leave" name="fav_4" value="Sick_Leave" onchange="output1()"></td>
+                          
+                          <td class="attend-col"><input type="radio" id="Personal_Leave" name="fav_4" value="Personal_Leave"></td>
+                          <td class="attend-col"><input type="radio" id="Absent_without_reason" name="fav_4" value="Absent_without_reason" ></td>
+                          <td ><input type="text"></td>
+                          <td class="missed-col"><p id="output4">NaN</p></td><!--Author: 26/11/2021 Tsang Tsz Fung-->
+                      </tr>
+                      <tr class="student">
+                        <td class="name-col">Aaron Kwok</td>
+                        <td class="attend-col"><input type="radio" id="Present" name="fav_5" value="Present"></td>
+                        <td class="attend-col"><input type="radio" id="Late" name="fav_5" value="Late"></td>
+                        <td class="attend-col"><input type="radio" id="Early_Leave" name="fav_5" value="Early_Leave"></td>
+                        <td class="attend-col"><input type="radio" id="Sick_Leave" name="fav_5" value="Sick_Leave" onchange="output1()"></td>
+                        
+                        <td class="attend-col"><input type="radio" id="Personal_Leave" name="fav_5" value="Personal_Leave"></td>
+                        <td class="attend-col"><input type="radio" id="Absent_without_reason" name="fav_5" value="Absent_without_reason" ></td>
+                        <td ><input type="text"></td>
+                        <td class="missed-col"><p id="output5">NaN</p></td>
+                    </tr>
+                      
+                        </tbody>
+                    </table>
+                    </div>
+                    <div class="center" >
+                      <br>
+                    <button type="button" class="btn btn-danger " style="font-family:Arial;" onclick="CheckNCount()">Save</button>
+                    <button type="reset" class="btn btn-warning " id="Reset" style="font-family:Arial;" onchange="clearResult()">Reset</button>
+                    </div>
+                </div>
+              </form>
+            </div>
+        </div>
+  </div>
+</div>
+
+<script>
+function CheckNCount(){
+alert("The Record Saved!");
+
+}
+</script>
+
+</body>
+</html>

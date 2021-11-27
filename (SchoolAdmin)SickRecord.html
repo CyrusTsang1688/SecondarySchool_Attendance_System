@@ -1,0 +1,235 @@
+<!DOCTYPE html><!--Author: Tsang Ho Man 26/11/2021-->
+<html lang="en">
+<head>
+    <title>Innovative Secondary school Admin Page</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="img/INS_LOGO.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/INS_LOGO.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/INS_LOGO.png">
+
+	<meta charset="UTF-8">
+	<title>Fixed Header with html and css | Collapsing Header Tutorial</title>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/SASR.css">
+	<link href="style.css" rel="stylesheet">
+</head>
+<script src="https://kit.fontawesome.com/52ac0a9f1f.js" crossorigin="anonymous"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+ <script>
+     $(document).ready(function() {
+     //  les informations de chaque candidat
+     var panels = $('.user-infos');
+    var panelsButton = $('.dropdown-user');
+    panels.hide();
+    $("form.formSD").on("submit", function() {
+        alert("I've been submitted the sick record.");
+        });
+});
+    //Click dropdown
+    panelsButton.click(function() {
+        //get data-for attribute
+        var dataFor = $(this).attr('data-for');
+        var idFor = $(dataFor);
+
+        //current button
+        var currentButton = $(this);
+        idFor.slideToggle(400, function() {
+            //Completed slidetoggle
+            if(idFor.is(':visible'))
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+            }
+            else
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+            }
+        })
+    });
+    function castvote() {
+            var datalist = document.getElementById('Class');
+        
+            var browserChildren = document.getElementById('Classlist').children
+
+            var flag = false
+            for(let i = 0; i < browserChildren.length; i++){
+                flag = browserChildren[i].value === datalist.value || flag
+            }
+            console.log(datalist.value)
+            if (flag == true){
+                if (datalist.value == "4A"){
+                    var name4a = new Array("Tsang Tsz Fung","Tsang Ho Man","Xu Shang Chi","CHAN KAM SHING");
+                    var options = '';
+                    $('#Namelist').empty();
+                    
+
+                    for (var i = 0; i < name4a.length; i++) {
+                    options += '<option value="' + name4a[i] + '" />';
+                    }
+
+                    document.getElementById('Namelist').innerHTML = options;
+                    document.getElementById('name').removeAttribute("disabled")
+                }
+                if (datalist.value == "5A"){
+                    var name5a = new Array("CHAN KING","CHAN MEI SIM","AU YEE WAN","Lee Hak kan","Chan Kong sang","Tony Wong","Tony Leung","Chow Yun-fat");
+                    var options = '';
+                    $('#Namelist').empty();
+                    document.getElementById('name').removeAttribute("disabled")
+                    for (var i = 0; i < name5a.length; i++) {
+                    options += '<option value="' + name5a[i] + '" />';
+                    }
+
+                    document.getElementById('Namelist').innerHTML = options;
+                }
+                if (datalist.value == "6D"){
+                    var name6d = new Array("Maggie Cheung","Stephen Chow","Anita Mui","Andy Lau","Aaron Kwok");
+
+                   var options = '';
+                   $('#Namelist').empty();
+                   document.getElementById('name').removeAttribute("disabled")
+                    for (var i = 0; i < name6d.length; i++) {
+                    options += '<option value="' + name6d[i] + '" />';
+                    }
+
+                    document.getElementById('Namelist').innerHTML = options;
+                }
+            }
+        } 
+        function addPhone() {
+            var datalist = document.getElementById('name');
+        
+            var browserChildren = document.getElementById('Namelist').children
+
+            var flag = false
+            for(let i = 0; i < browserChildren.length; i++){
+                flag = browserChildren[i].value === datalist.value || flag
+            }
+            console.log(datalist.value)
+            if (flag == true){
+                if (datalist.value == "Tsang Tsz Fung"){
+                    document.getElementById('PhoneNumber').value = 54218422;
+                }else if (datalist.value == "Tsang Ho Man"){
+                    document.getElementById('PhoneNumber').value = 84226200;
+                }else if (datalist.value == "Xu Shang Chi"){
+                    document.getElementById('PhoneNumber').value = 92492094;
+                }else if (datalist.value == "CHAN KAM SHING"){
+                    document.getElementById('PhoneNumber').value = 62246200;
+                }else if (datalist.value == "CHAN KING"){
+                    document.getElementById('PhoneNumber').value = 62005407;
+                }else if (datalist.value == "CHAN MEI SIM"){
+                    document.getElementById('PhoneNumber').value = 62004804;
+                }else if (datalist.value == "AU YEE WAN"){
+                    document.getElementById('PhoneNumber').value = 62009608;
+                }else if (datalist.value == "Lee Hak kan"){
+                    document.getElementById('PhoneNumber').value = 62002360;
+                }else if (datalist.value == "Chan Kong sang"){
+                    document.getElementById('PhoneNumber').value = 62002360;
+                }else if (datalist.value == "Tony Wong"){
+                    document.getElementById('PhoneNumber').value = 30591667;
+                }else if (datalist.value == "Tony Leung"){
+                    document.getElementById('PhoneNumber').value = 38143059;
+                }else if (datalist.value == "Chow Yun-fat"){
+                    document.getElementById('PhoneNumber').value = 94976741;
+                }else if (datalist.value == "Maggie Cheung"){
+                    document.getElementById('PhoneNumber').value = 67413059;
+                }else if (datalist.value == "Stephen Chow"){
+                    document.getElementById('PhoneNumber').value = 35976741;
+                }else if (datalist.value == "Anita Mui"){
+                    document.getElementById('PhoneNumber').value = 67411965;
+                }else if (datalist.value == "Andy Lau"){
+                    document.getElementById('PhoneNumber').value = 67413059;
+                }else if (datalist.value == "Aaron Kwok"){
+                    document.getElementById('PhoneNumber').value = 30593059;
+                }
+            }
+        } 
+
+       
+        
+ </script><!--Author: Tsang Ho Man 26/11/2021-->
+ <style>
+    #form3{
+			position: relative;
+			width: 900px;
+			height: 500px;
+			border-radius: 25px;
+			border: 2px solid rgb(114, 110, 110);
+			padding: 20px;
+			margin: auto;
+			width: 60%;
+		}
+        textarea {
+        width: 500px;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        font-size: 16px;
+        resize: none;
+        }
+</style>
+ <body>
+    
+	<div class="box-area">
+		<header>
+			<div class="wrapper">
+				<div class="logo">
+					<a href="#">School Admin</a>
+				</div>
+				<nav>
+					<i style="background-color: aliceblue;" class="fas fa-search"></i><a  href="SchoolAdminViewInformation.html">User/Class Information</a> 
+                    <i style="background-color: aliceblue;" class="far fa-plus-square"></i><a  href="(SchoolAdmin)CreateAccount.html">Create Accounts/Class</a> 
+                    <i style="background-color: aliceblue;" class="fas fa-clipboard"></i><a  href="(SchoolAdmin)SickRecord.html">Sick record</a>
+                   
+                    <div class="links-unordered">
+                        <a class="toggle-button" href="Login.html">Logout</a>
+                        <ul style="display:none;">
+                            <br>
+                          <li><a href="#">cdn.sc.rockstargames.com</a></li>
+                          <li><a href="#">lifeinvader.com</a></li>
+                          <li><a href="#">rockstargames.com</a></li>
+                          <li><a href="#">socialclub.rockstargames.com</a></li>
+                        </ul>
+                    </div>
+				</nav>
+			</div>
+		</header>
+		<div class="banner-area">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" type="text/css">
+    	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
+		<link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+        <div id="EditClass">
+            <form id="formSD" class="formSD">
+            <div id="form3">
+                
+                <label for="Class">Class</label><br>
+                <input class="re" list="Classlist" type="text" id="Class" name="Class" onchange="castvote()" required/><br>
+                <datalist id="Classlist">
+                    <!--Author: Tsang Ho Man 26/11/2021-->
+                    <option label="4A" value="4A" />
+                    <option label="5A" value="5A" />
+                    <option label="6D" value="6D" />
+                </datalist>
+                <label for="name">Name</label><br>
+                <input class="re" list="Namelist" id="name" name="name" type="text" onchange="addPhone()" disabled required /><br>
+                <datalist id="Namelist">
+                    
+                    
+                </datalist>
+                
+                <label for="PhoneNumber">Phone Number</label><br>
+                <input class="re" id="PhoneNumber" type="number"  disabled required /><br>
+
+                <label for="textarea">Comments</label><br>
+                <textarea>Some comments...</textarea>
+                </div>
+            
+            <input type="submit" onclick="Save()" value="Submit"/> 
+            
+            </form>
+            </div> 
+            <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/select/1.2.1/js/dataTables.select.min.js" type="text/javascript"></script>
+ 
+
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>

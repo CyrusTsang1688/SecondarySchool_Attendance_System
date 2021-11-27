@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <script src="jslib\jquery-1.11.1.js"></script>
+<style>
+div {
+            width: 400px;
+            height: 300px;
+            margin: 20px;
+            float: left;
+            transition: all 1s;
+        }
+
+
+        .one {
+            background-color: red;
+        }
+
+        .two {
+            background-color: green;
+        }
+
+        .three {
+            background-color: blue;
+        }
+
+        .change {
+            height: 150px;
+            background-color: yellow;
+        }
+</style>
+<body>
+
+    <div id="ss" class="one"></div>
+    <div id="cxc" class="two"></div>
+    <div class="three"></div>
+
+<script>
+$(document).ready(function () {
+            $("#ss").click(function () {
+                $("#cxc").addClass("change");
+            });
+
+        });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!--Author: Tsang Ho Man 26/11/2021-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Innovative Secondary school Admin Page</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="img/INS_LOGO.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/INS_LOGO.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/INS_LOGO.png">
+
+	<meta charset="UTF-8">
+	<title>Fixed Header with html and css | Collapsing Header Tutorial</title>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/SACA.css">
+	<link href="style.css" rel="stylesheet">
+</head>
+<script src="https://kit.fontawesome.com/52ac0a9f1f.js" crossorigin="anonymous"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+ <script>
+$(document).ready(function() {
+    $("#form_2").hide();
+    $("#form_3").hide();
+    $("#form_4").hide();
+        $("#showSA").click(function() {
+            
+            $("#form_1").show();
+            $("#form_2").hide();
+            $("#form_3").hide();
+            $("#form_4").hide();
+        });
+        $("#showTC").click(function() {
+            $("#form_1").hide();
+            $("#form_2").show();
+            $("#form_3").hide();
+            $("#form_4").hide();
+        });
+        $("#showSD").click(function() {
+            $("#form_1").hide();
+            $("#form_2").hide();
+            $("#form_3").show();
+            $("#form_4").hide();
+        });
+        $("#showCL").click(function() {
+            $("#form_1").hide();
+            $("#form_2").hide();
+            $("#form_3").hide();
+            $("#form_4").show();
+        });
+        $("#formSA").submit(function() {
+            
+            if($("#saname").val() == 'Admin'){
+                alert("The "+$("#saname").val()+" name is repeat!");
+            }else{
+                alert($("#saname").val()+" create admin account success!");
+            }    
+        });
+        $("#formTC").submit(function() {
+            if($("#tcname").val() == 'Au Wai Lun'){
+                alert("The "+$("#tcname").val()+" name is repeat!");
+            }else{
+                alert($("#tcname").val()+" create teacher account success!");
+            }
+        });
+        $("#formSD").submit(function() {
+            
+            if($("#sdname").val() == 'Tsang Tsz Fung'){
+                alert("The "+$("#sdname").val()+" name is repeat!");
+            }else{
+                alert($("#sdname").val()+" create student account success!");
+            }       
+        });
+        $("#formCL").submit(function() {
+            
+            alert("You open "+document.getElementById('yearclass').value+" to "+document.getElementById('yearclassend').value+" class year!");
+                
+        });
+    var counter = 0;
+    
+    $("#addClass").click(function () {
+            var html = '';
+            html += '<input class="re" list="ManagementClasslist" type="text" id="ManagementClass" name="ManagementClass" required/><br>';
+            html += '<datalist id="ManagementClasslist">';
+            html += '<option label="1A" value="1A" />';
+            html += '<option label="2B" value="2B" />';
+            html += '<option label="3C" value="3C" />';
+            html += '<option label="4B" value="4B" />';
+            html += '<option label="5D" value="5D" />';
+            html += '</datalist>';
+            counter +=1;    
+            if (counter > 1)
+            {
+                alert("Only add 3 class");
+                $("#addClass").prop('disabled', true);
+            }
+            $('#newClass').append(html);
+        });
+        function checkCounter() 
+            {
+            if (counter > 3)
+            {
+                $("#addClass").dialog();
+                $("#addClass").prop('disabled', true);
+            }
+
+            counter++;
+            return true;
+            }
+    var c = 0;
+    
+    $("#addClassy").click(function () {
+            var html = '';
+            html += '<input class="re" list="ManagementClasslist" type="text" id="ManagementClass" name="ManagementClass" required/><br>';
+            html += '<datalist id="ManagementClasslist">';
+            html += '<option label="1A" value="1A" />';
+            html += '<option label="2B" value="2B" />';
+            html += '<option label="3C" value="3C" />';
+            html += '<option label="4B" value="4B" />';
+            html += '<option label="5D" value="5D" />';
+            html += '</datalist>';
+            c +=1;    
+            if (c > 3)
+            {
+                alert("Only add 5 class");
+                $("#addClassy").prop('disabled', true);
+            }
+            $('#newClassy').append(html);
+        });
+        function checkC() 
+            {
+            if (c > 3)
+            {
+                $("#addClassy").dialog();
+                $("#addClassy").prop('disabled', true);
+            }
+
+            c++;
+            return true;
+            }    
+//  les informations de chaque candidat
+      var panels = $('.user-infos');
+    var panelsButton = $('.dropdown-user');
+    panels.hide();
+});
+    //Click dropdown
+    panelsButton.click(function() {
+        //get data-for attribute
+        var dataFor = $(this).attr('data-for');
+        var idFor = $(dataFor);
+
+        //current button
+        var currentButton = $(this);
+        idFor.slideToggle(400, function() {
+            //Completed slidetoggle
+            if(idFor.is(':visible'))
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+            }
+            else
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+            }
+        })
+    });
+
+
+
+ </script>
+ <style>
+    #form1{
+        position: relative;
+        width: 900px;
+        height: 400px;
+        border-radius: 25px;
+        border: 2px solid rgb(114, 110, 110);
+        padding: 20px;
+        margin: auto;
+        width: 60%;
+    }
+    #form2{
+        position: relative;
+        width: 900px;
+        height: 500px;
+        border-radius: 25px;
+        border: 2px solid rgb(114, 110, 110);
+        padding: 20px;
+        margin: auto;
+        width: 60%;
+    }
+    #form3{
+        position: relative;
+        width: 900px;
+        height: 500px;
+        border-radius: 25px;
+        border: 2px solid rgb(114, 110, 110);
+        padding: 20px;
+        margin: auto;
+        width: 60%;
+    }
+    #form4{
+        position: relative;
+        width: 900px;
+        height: 500px;
+        border-radius: 25px;
+        border: 2px solid rgb(114, 110, 110);
+        padding: 20px;
+        margin: auto;
+        width: 60%;
+    }
+    #small{
+        width: 300px;
+        margin: auto;
+    }
+    #left {
+        border-radius: 25px;
+        border: 2px solid rgb(114, 110, 110);
+        padding: 20px;
+        width: 300px;
+        height: 350px;
+        position: absolute;
+    }
+    #right {
+        border-radius: 25px;
+        border: 2px solid rgb(114, 110, 110);
+        padding: 20px;
+        width: 300px;
+        height: 350px;
+        right: 200px;
+        position: absolute;
+    }
+    .buttonHolder{ text-align: center; }
+    #bottomPART {
+        width: 700px;
+        text-align: center;
+    }
+    input                       {background-position: 3px 5px; background-repeat: no-repeat; border-radius:
+                                    5px; padding: 5px 5px 5px 20px; width: 300px;margin-top: 10px;margin-bottom: 10px;}
+    input:focus                 {outline: none;}
+    
+    .re:focus:invalid           {background-image: url(invalid.png); box-shadow: 0px 0px 5px
+                                #b01212; border: 2px solid #b01212;}
+    .re:valid                   {background-image: url(accept.png); border: 2px solid #7ab526;}
+    input[type=submit]          {background: #b47716; border: none; box-shadow: 0px 0px 5px
+                                #f6cb0a; color: #fff; font-size: 60px;  font-weight: bold;
+                                    padding-left: 5px; }
+    input[type=submit]:hover
+    {
+        box-shadow:10px 10px 50px#bd6310;;
+    }                                
+    </style>
+<body>
+    
+	<div class="box-area">
+		<header>
+			<div class="wrapper">
+				<div class="logo">
+					<a href="#">School Admin</a>
+				</div>
+				<nav>
+					<i style="background-color: aliceblue;" class="fas fa-search"></i><a  href="SchoolAdminViewInformation.html">User/Class Information</a> 
+                    <i style="background-color: aliceblue;" class="far fa-plus-square"></i><a  href="(SchoolAdmin)CreateAccount.html">Create Accounts/Class</a> 
+                    <i style="background-color: aliceblue;" class="fas fa-clipboard"></i><a  href="(SchoolAdmin)SickRecord.html">Sick record</a>
+                   
+                    <div class="links-unordered">
+                        <a class="toggle-button" href="Login.html">Logout</a>
+                        <ul style="display:none;">
+                            <br>
+                          <li><a href="#">cdn.sc.rockstargames.com</a></li>
+                          <li><a href="#">lifeinvader.com</a></li>
+                          <li><a href="#">rockstargames.com</a></li>
+                          <li><a href="#">socialclub.rockstargames.com</a></li>
+                        </ul>
+                    </div>
+				</nav>
+			</div>
+		</header>
+		<div class="banner-area">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" type="text/css">
+    	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
+		<link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+        <div class="links-unordered">
+            <button class="choose-button" id="showSA">Create Admin Account</button>
+            <button class="choose-button" id="showTC">Create Teacher Account</button>
+            
+            <button class="choose-button" id="showSD">Create Student Account</button>
+            <button class="choose-button" id="showCL" >Create Class</button>
+             
+        </div> 
+        <div id="form_1">
+        <form id="formSA">
+        <div id="form1">
+            <h1>Create Admin Account</h1>
+            <label for="name">Name</label><br>
+            <input class="re" id="saname" type="text" placeholder="Chan man" required /><br>
+            <label for="name">Password</label><br>
+            <input class="re" id="ps" type="password"  required /><br>
+              
+        </div> 
+        <input type="submit" value="Create"/>  
+        </form>
+        </div>  
+        
+        <div id="form_2">
+        <form id="formTC">
+        <div id="form2">
+            <h1>Create Teacher Account</h1>
+            <label for="name">Name</label><br>
+            <input class="re" id="tcname" type="text" placeholder="Chan man" required /><br>
+            <label for="Password">Password</label><br>
+            <input class="re" id="ps" type="password" required /><br>
+            <label for="PhoneNumber">Phone Number</label><br>
+            <input class="re" id="PhoneNumber" type="number" placeholder="65149655" required /><br>
+            <label for="ManagementClass">Management Class</label><br>
+            <div id="newClass">
+            <input class="re" list="ManagementClasslist" type="text" id="ManagementClass" name="ManagementClass" required/><br>
+            <datalist id="ManagementClasslist">
+                <option label="1A" value="1A" />
+                <option label="2B" value="2B" />
+                <option label="3C" value="3C" />
+                <option label="4B" value="4B" />
+                <option label="5D" value="5D" />
+            </datalist>
+            </div>
+            <button id="addClass">Add Class</button>
+        </div> 
+        <input type="submit" value="Create"/>  
+        </form>
+        </div> 
+
+        <div id="form_3">
+            <form id="formSD">
+            <div id="form3">
+                <h1>Create Student Account</h1>
+                <label for="name">Name</label><br>
+                <input class="re" id="sdname" type="text" placeholder="Chan man" required /><br>
+                <label for="Password">Password</label><br>
+                <input class="re" id="ps" type="password"  required /><br>
+                <label for="enrollment">Year of enrollment</label><br>
+                <input type="number" id="enrollment" placeholder="YYYY" min="2018" max="2022" required><br>
+                <label for="Class">Class</label><br>
+                <input class="re" list="Classlist" type="text" id="Class" name="Class" required/><br>
+                <datalist id="Classlist">
+                    <option label="1A" value="1A" />
+                    <option label="2B" value="2B" />
+                    <option label="3C" value="3C" />
+                    <option label="4B" value="4B" />
+                    <option label="5D" value="5D" />
+                </datalist>
+                <label for="PhoneNumber">Phone Number</label><br>
+                <input class="re" id="PhoneNumber" type="number" placeholder="65149655" required /><br>
+                <label for="gender">Gender</label><br>
+                <div id="small">
+                <input type="radio" name="gender" value="M" checked />Male<br>
+                <input type="radio" name="gender" value="F" /> Female 
+                </div>
+            </div> 
+            <input type="submit" value="Create"/>  
+            </form>
+            </div><!--Author: Tsang Ho Man 26/11/2021-->
+
+            <div id="form_4">
+                <form id="formCL">
+                <div id="form4">
+                    <h1>Create Class</h1>
+                    <label for="yearclass">Year of class</label><br>
+                    <input type="number" id="yearclass" placeholder="YYYY" min="2021" max="2100" required>to<input type="number" id="yearclassend" placeholder="YYYY" min="2021" max="2100" required><br>
+                    <label for="Class">Class</label><br>
+                    <div id="newClassy">
+                    <input class="re" list="Classlist" type="text" id="Class" name="Class" required/><br>
+                    <datalist id="Classlist">
+                        <option label="1A" value="1A" />
+                        <option label="2B" value="2B" />
+                        <option label="3C" value="3C" />
+                        <option label="4B" value="4B" />
+                        <option label="5D" value="5D" />
+                    </datalist>
+                    </div>
+                    <button id="addClassy">Add Class</button>
+                    </div>
+                
+                <input type="submit" value="Create"/>  
+                </form>
+                </div>
+            </div>
+        </div>         
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/select/1.2.1/js/dataTables.select.min.js" type="text/javascript"></script>
+ 
+
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+
+		</div>
+	</div>
+</body>
+</html>

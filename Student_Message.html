@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<head>
+    <title>Innovative Secondary school Student Page</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="img/INS_LOGO.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/INS_LOGO.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="CSS/munu.css">
+    <link rel="stylesheet" href="CSS/header-user-dropdown.css">
+    <link rel="stylesheet" href="CSS/header-second-bar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.0/flatly/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!--Author: Tsang Tsz Fung 26/11/2021-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+
+    <script src="Javascript\5x5jqpi.min.js"></script>
+    <script>
+    $(document).ready(function(){
+
+       
+        });    
+        
+       
+                </script>
+
+                <style>
+                    .col-full {
+    flex-basis: 98%;
+    margin: 0 1%;
+}
+
+@media (max-width: 820px) {
+    .col-full {
+        flex-basis: 98%;
+        margin: 0 1%;
+    }
+}
+.push-top {
+    margin-top: 20px;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+.button {
+    position: absolute;
+    top: 50%;
+}
+                    </style>
+         
+</head>
+    <body>
+<header class="header-user-dropdown"> 
+    <div class="header-two-bars">
+
+	<div class="header-first-bar">
+
+		<div class="header-limiter">
+
+            <h1 class="animate__animated animate__backInLeft callout-title"><a href="Student.html">Innovative<span>SecondarySchool</span></a></h1>
+			<nav>
+				<a href="Student.html">Main</a>
+				<a href="Student_Upload.html">Upload Document</a>
+				<a href="Student_Profile.html">Profile</a>
+			</nav>
+            
+            <div class="header-user-menu">
+                <img src="img/Shang-Chi.jpg" alt="User Image"/>
+                <ul>
+                    <li><a href="Student.html">Main</a></li>
+                    <li><a href="Student_Profile.html">Profile</a></li>
+                    <li><a href="Student_Myclass.html">My Class</a></li>
+                    <li><a href="Login.html" class="highlight">Logout</a></li>
+                </ul>
+            </div><!--Author: Tsang Tsz Fung 26/11/2021-->
+			<a href="Login.html" class="logout-button">Logout</a>
+
+           
+		</div>
+
+	</div>
+
+	<div class="header-second-bar">
+
+		<div class="header-limiter">
+			<h1>Welcome, Xu Shang-Chi Shaun</h1>
+
+			<nav>
+				<i class="fa fa-group"></i><a href="Student_Myclass.html"> My Class</a>&emsp;
+				<i class="far fa-clock"></i>&ensp;<a href="Student_Attendance.html">Attendance</a>
+			</nav>
+
+            
+		</div>
+
+	</div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1 class="page-header text-center">Message To Teacher</h1>
+          <form class="form-horizontal" role="form">
+              <div class="form-group">
+                  <label for="issue" class="col-sm-1 control-label">Issue</label>
+                  <div class="col-sm-12">
+                      <input type="text" class="form-control" id="issue" name="issue" placeholder="Problem Title" value="">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="email" class="col-sm-1 control-label">Teacher</label>
+                  <div class="col-sm-12">
+                      
+                    <div class="form-group">
+                        <select class="combobox form-control" name="normal">
+                          <option value="" selected="selected">Select a State</option>
+                          <option value="AL">Au Wai Lun Teacher</option>
+                        </select>
+                      </div>
+                    
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="message" class="col-sm-1 control-label">Details</label>
+                  <div class="col-sm-12">
+                      <textarea class="form-control" rows="4" name="message"></textarea>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="human" class="col-sm-1 control-label">Problem Type</label>
+                  <div class="col-sm-12">
+                      <input type="text" class="form-control" id="human" name="human" >
+                  </div><!--Author: Tsang Tsz Fung 26/11/2021-->
+              </div>
+              <div class="form-group">
+                  <div class="wrapper">
+                      <input id="submit" name="submit" type="submit" value="Send" onclick="Done()" class="btn btn-primary">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <div class="col-sm-10 col-sm-offset-2">
+                      <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                  </div>
+              </div>
+          </form> 
+      </div>
+  </div>
+</div> 
+
+<script>
+    function Done(){
+        alert("Done");
+    }
+</script>
+
+
+</body>
+</html>

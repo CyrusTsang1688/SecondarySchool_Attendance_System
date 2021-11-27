@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<head>
+    <title>Innovative Secondary school Teacher Page</title>
+    <link rel="stylesheet" href="CSS/StyleTeacher.css">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/INS_LOGO.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/INS_LOGO.png">
+    <link rel="stylesheet" href="CSS/Teacher_Create.css">
+    <link rel="stylesheet" href="CSS/header-user-dropdown.css">
+    <link rel="stylesheet" href="CSS/header-second-bar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet"><!--Author: 26/11/2021 Tsang Tsz Fung-->
+
+    <script>
+    $(document).ready(function(){
+
+      $(function(){
+        var dtToday = new Date();
+        
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if(month < 10)
+            month = '0' + month.toString();
+        if(day < 10)
+            day = '0' + day.toString();
+        
+        var maxDate = year + '-' + month + '-' + day;
+        $('#txtDate_start').attr('min', maxDate);
+        $('#txtDate_end').attr('min', maxDate);
+    });
+      
+        function updateTime() {
+      var dateInfo = new Date();
+    
+      /* time */
+      var hr,
+        _min = (dateInfo.getMinutes() < 10) ? "0" + dateInfo.getMinutes() : dateInfo.getMinutes(),
+        sec = (dateInfo.getSeconds() < 10) ? "0" + dateInfo.getSeconds() : dateInfo.getSeconds(),
+        ampm = (dateInfo.getHours() >= 12) ? "PM" : "AM";
+    
+      // replace 0 with 12 at midnight, subtract 12 from hour if 13–23
+      if (dateInfo.getHours() == 0) {
+        hr = 12;
+      } else if (dateInfo.getHours() > 12) {
+        hr = dateInfo.getHours() - 12;
+      } else {
+        hr = dateInfo.getHours();
+      }
+    
+      var currentTime = hr + ":" + _min + ":" + sec;
+    
+      // print time
+      document.getElementsByClassName("hms")[0].innerHTML = currentTime;
+      document.getElementsByClassName("ampm")[0].innerHTML = ampm;
+    
+      /* date */
+      var dow = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        month = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+        ],
+        day = dateInfo.getDate();
+    
+      // store date
+      var currentDate = dow[dateInfo.getDay()] + ", " + month[dateInfo.getMonth()] + " " + day;
+    
+      document.getElementsByClassName("date")[0].innerHTML = currentDate;
+    };
+    
+    // print time and date once, then update them every second
+    updateTime();
+    setInterval(function() {
+      updateTime()
+    }, 1000);  
+
+let workingDaysBetweenDates = (d0, d1) => {
+  /* Two working days and an sunday (not working day) */
+  var holidays = ['2016-05-03', '2016-05-05', '2016-05-07'];
+  var startDate = parseDate(d0);
+  var endDate = parseDate(d1);  
+
+// Validate input
+  if (endDate <= startDate) {
+    return 0;
+  }
+
+// Calculate days between dates
+  var millisecondsPerDay = 86400 * 1000; // Day in milliseconds
+  startDate.setHours(0, 0, 0, 1);  // Start just after midnight
+  endDate.setHours(23, 59, 59, 999);  // End just before midnight
+  var diff = endDate - startDate;  // Milliseconds between datetime objects    
+  var days = Math.ceil(diff / millisecondsPerDay);
+
+  // Subtract two weekend days for every week in between
+  var weeks = Math.floor(days / 7);
+  days -= weeks * 2;
+
+  // Handle special cases
+  var startDay = startDate.getDay();
+  var endDay = endDate.getDay();
+    
+  // Remove weekend not previously removed.   
+  if (startDay - endDay > 1) {
+    days -= 2;
+  }
+  // Remove start day if span starts on Sunday but ends before Saturday
+  if (startDay == 0 && endDay != 6) {
+    days--;  
+  }
+  // Remove end day if span ends on Saturday but starts after Sunday
+  if (endDay == 6 && startDay != 0) {
+    days--;
+  }
+  /* Here is the code */
+  holidays.forEach(day => {
+    if ((day >= d0) && (day <= d1)) {
+      /* If it is not saturday (6) or sunday (0), substract it */
+      if ((parseDate(day).getDay() % 6) != 0) {
+        days--;
+      }
+    }
+  });
+  return days;
+}
+           
+function parseDate(input) {
+    // Transform date from text to date
+  var parts = input.match(/(\d+)/g);
+  // new Date(year, month [, date [, hours[, minutes[, seconds[, ms]]]]])
+  return new Date(parts[0], parts[1]-1, parts[2]); // months are 0-based
+}
+
+$('#txtDate_end').on("input", function() {
+  var d1 = $('#txtDate_start').val();
+  var d2 = $('#txtDate_end').val();
+    $('#dif').text(workingDaysBetweenDates(d1,d2));
+  });
+
+$('#txtDate_start').on("input", function() {
+  var d1 = $('#txtDate_start').val();
+  var d2 = $('#txtDate_end').val();
+    $('#dif').text(workingDaysBetweenDates(d1,d2));
+  });
+
+  
+  $(".draggable-left, .draggable-right").sortable({
+      connectWith: ".connected-sortable",
+      stack: ".connected-sortable ul",
+});
+      
+      //update: retChkVal( event, ui ),
+
+
+      jQuery("#inputString").keyup(function () {
+    var filter = jQuery(this).val();
+    jQuery(".draggable-right li").each(function () {
+        if (jQuery(this).text().search(new RegExp(filter, "i")) < 0) {
+            jQuery(this).hide();
+        } else {
+            jQuery(this).show()
+        }
+    });
+});
+
+$(".draggable-left, .draggable-right").mouseover(function(){
+  retChkVal();
+  });
+
+ function retChkVal()
+ {
+ //alert();
+ var count_elements = $('.draggable-left li').length ;
+ $('#TheCount').html(count_elements);
+ }
+
+});
+    </script>
+    <style>
+    
+    </style>
+</head>
+    <body>
+
+
+      <header class="header-user-dropdown"> 
+    <div class="header-two-bars">
+
+	<div class="header-first-bar">
+
+		<div class="header-limiter">
+
+            <h1 class="animate__animated animate__backInLeft callout-title"><a href="Teacher.html">Innovative<span>SecondarySchool</span></a></h1>
+			<nav>
+				<a href="Teacher.html" >Main</a>
+				<a href="Teacher_CreateClass.html" class="selected">Create Class</a>
+				<a href="Teacher_Approval.html">Approvement </a>
+			</nav>
+            
+            <div class="header-user-menu">
+                <img src="img/Lun.jpg" alt="User Image"/>
+                <ul>
+                  <li class="reset-this"><a href="Teacher.html">Main</a></li>
+                  <li class="reset-this"><a href="Teacher_Myclass.html">My Class</a></li>
+                  <li class="reset-this"><a href="Login.html" class="highlight">Logout</a></li>
+              </ul>
+            </div>
+			<a href="Login.html" class="logout-button">Logout</a>
+        <span class="hms"></span>
+        <span class="ampm"></span>
+        <br>
+        <span class="date"></span>
+		</div>
+
+	</div>
+
+	<div class="header-second-bar">
+
+		<div class="header-limiter">
+			<h2>Welcome, Au Wai Lun</h2>
+
+			<nav>
+				<a href="Teacher_Myclass.html"><i class="fas fa-chalkboard-teacher"></i>&nbsp;My Class</a>&nbsp;&nbsp;&nbsp;
+				<a href="Teacher_Profile.html"><i class="fas fa-user"></i> Profile</a>
+				<a href="Teacher_Search.html"><i class="fa fa-users"></i>Search Student</a>
+			</nav>
+		</div>
+
+	</div>
+</div>
+</header>
+<body>
+  <!--Main Navigation-->
+  <div class="container d-flex justify-content-center mt-5 mb-5">
+    <!--<div class="row g-3">-->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header p-0">
+                            <h2 class="mb-2"> 
+                                    <div class="d-flex align-items-center justify-content-between btn-block text-left p-3 rounded-0"> <span>Create Class</span>
+                                 </h2>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                          <form oninput="x.value=CTitle.value;
+                          t.value=TS.value;
+                          CType.value=CT.value;
+                          TMethod.value=TM.value;
+                          ST.value=txtDate_start.value;
+                          SE.value=txtDate_end.value;
+                          "><!--Author: 26/11/2021 Tsang Tsz Fung-->
+                            <div class="card-body class-card-body"> <span class="font-weight-normal card-text">Class Title</span>
+                                <div class="input"> <i class="fas fa-book"></i> <input type="text" class="form-control" id="CTitle" placeholder="Class"> </div>
+                                <div class="row mt-3 mb-3">
+                                    <div class="col-md-4"> <span class="font-weight-normal card-text">Total Student (Max 40)</span>
+                                        <div class="input"> <i class="fas fa-user"></i> <input type="number" class="form-control" max="40" min="1" id="TS" placeholder="0" > </div>
+                                    </div>
+                                    <div class="col-md-4"> <span class="font-weight-normal card-text">Teaching Language</span>
+                                        <div class="input"> <select id="CT" name="CT" class="form-control" > 
+                                          <option selected disabled>Choose</option>
+                                          <option value="English">English</option>
+                                          <option value="Chinese">Chinese</option>
+                                      </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4"> <span class="font-weight-normal card-text">Teaching Method</span>
+                                      <div class="input"><select id="TM" name="TM" class="form-control" required>
+                                        <option value="Face To Face">Face To Face</option>
+                                        <option value="Online">Online</option>
+                                      </select>
+                                    </div>
+                                    </div>
+                                </div> 
+                                <div class="row mt-3 mb-3">
+                                  <div class="col-md-6"> <span class="font-weight-normal card-text">Start Date</span>
+                                      <div class="input"> <i class="fas fa-hourglass-start"></i> <input type="date" class="form-control" id="txtDate_start"> </div>
+                                  </div>
+                                  <div class="col-md-6"> <span class="font-weight-normal card-text">End Date</span>
+                                      <div class="input"> <i class="fas fa-hourglass-end"></i> <input type="date" class="form-control" id="txtDate_end"> </div>
+                                  </div>
+                              </div> 
+                         </div>
+                    <div class="draggable-main">
+                         <div class="row p-3 bg-white border rounded mt-2 ">
+                          <div class="col-md-12 mt-1">
+                              <h4>Selected Student:<p id="count"></p></h4>
+                              <div class="box" style="border: dotted;">
+                                <ul class="connected-sortable draggable-left" id="Selected_Student" >
+                                
+                                </ul>
+                                </div>
+                              
+                            </div>
+                      </div>
+                      <div class="row p-3 bg-white border rounded mt-1" >
+                        <div class="col-md-12 mt-1">
+                          <h4>Search Student :&ensp;<input type="text" id="inputString"></h4>
+                          <div class="box" id="box1">
+                            <ul class="connected-sortable draggable-right">
+                            <li>Kang Xiang</li>
+                            <li>Qin Jia</li>
+                            <li>Cao Liwei</li>
+                            <li>Xu Xiaodan</li>
+                            <li>Yi Meihui</li>
+                            <li>Zhu Qing</li>
+                            <li>Mo Jie</li>
+                            <li>Huang You</li>
+                            <li>Qin HongHui</li>
+                            </ul>
+                            </div>
+                            <div class="box" id="box2" style="display: none;">
+                              <ul class="connected-sortable draggable-right">
+                              <li>Yuan Yun</li>
+                              <li>Hou Yuanjun</li>
+                              <li>DannyCheung</li>
+                              <li>Duàn Xiu</li>
+                              </ul>
+                              </div>
+                        </div>
+                        <div class="row p-4 bg-white rounded mt-1" >
+                        &nbsp;
+                        <button type="button" class="btn-outline" onclick="Page1()">1
+                          </button>&nbsp;
+                          <button type="button" class="btn-outline" onclick="Page2()">2
+                            </button>
+                          </div>
+                    </div>
+                  </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6"> <span>Summary</span>
+            <div class="card">
+              <div class="d-flex justify-content-between p-3">
+                <div class="d-flex flex-column"> <span>Class Title&nbsp;<i class="fas fa-book"></i></span> </div>
+                <div class="mt-1"> <span><output name="x" for="CTitle">------</output></span></div>
+            </div>
+                <div class="d-flex justify-content-between p-3">
+                    <div class="d-flex flex-column"> <span>Number Of Student <i class="fas fa-user"></i></span> </div>
+                    <div class="mt-1"> <sup class="super-price" id="TheCount">0</sup> <span class="super-month">/&nbsp;<output name="t" for="TS">0</output></span> </div>
+                </div>
+                <hr class="mt-0 line">
+                <div class="p-3"><!--Author: 26/11/2021 Tsang Tsz Fung-->
+                    <div class="d-flex justify-content-between"> <span>Class Type</span><output name="CType" for="CType">------</output></div>
+                    <div class="d-flex justify-content-between"> <span>Teaching Method</span><span><output name="TMethod" for="TM">------</output></span></div>
+                    <div class="d-flex justify-content-between"> <span>Start Date </span> <span><output name="ST" for="txtDate_start">------</output></span> </div>
+                    <div class="d-flex justify-content-between"> <span>End Date </span> <span><output name="SE" for="txtDate_end">------</output></span> </div>
+                    <div class="d-flex justify-content-between"> <span style="color: blue;">Create By :</span> <span>Miss Lun</span> </div>
+                </div>
+                <hr class="mt-0 line">
+                <div class="p-3 d-flex justify-content-between">
+                    <div class="d-flex flex-column"> <span>Period Of Day/Days</span> <small>(Exclude Saturday & Sunday)</small> </div> <span id="dif" style="color: blue;">0</span>
+                </div>
+                <div class="p-3"> <button class="btn btn-primary btn-block free-button" onclick="Done()">Create</button>
+                </div>
+            </div>
+        <!--</div>-->
+    </div>
+  </form>
+<script>
+function Done(){
+  window.alert("Class Created");
+}
+function Page1(){
+  document.getElementById("box1").style.display = "block";
+  document.getElementById("box2").style.display = "none";
+}
+function Page2(){
+  document.getElementById("box1").style.display = "none";
+  document.getElementById("box2").style.display = "block";
+}
+
+  </script>
+  
+</div>
+
+</body>
+</html>

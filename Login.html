@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <!--Creator: Tsang Tsz Fung-->
+    <!--The Logo on the Tap-->
+    <title>Innovative Secondary school Login Page</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="img/INS_LOGO.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/INS_LOGO.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/INS_LOGO.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <meta name="msapplication-TileColor" content="#fdcb04" />
+    <meta name="theme-color" content="#fdcb04" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  
+
+    <link rel="stylesheet" href="CSS/styleLogin.css" />
+    
+    <script src="jslib\jquery-1.11.1.js"></script>
+    <script>
+    $(document).ready(function(){   
+    
+    });
+      
+            </script>
+            
+</head>
+    <body>
+        <header class="dropbox-navbar">
+            <div class="dropbox-navbar__container flex items-center max-w-xl mx-auto justify-center">
+               <!--<button class="dropbox-navbar__button">Try Dropbox Business</button>-->
+               <div id=ISS-logo>
+                <h1 class="animate__animated animate__jello callout-title">Innovative<span style="color: #bc40df;">SecondarySchool</span>&nbsp;&nbsp;</h1>
+              </div>
+              <a href="#" class="flex dropbox-navbar__logo justify-center w-auto"
+                ><img src="img/INS_LOGO.png" alt="" />
+              </a>
+               <!--<a href="#" class="dropbox-navbar__link">Download the app</a>-->
+            </div>
+          </header>
+          <div class="dropbox-content max-w-xl mx-auto flex">
+            <div class="dropbox-content__img w-half flex justify-center items-center">
+              <img src="img/INS_LOGO.png" alt="Login Image" />
+            </div>
+            <div class="dropbox-content__form w-half">
+                <div class="form__header flex justify-between">
+                  <h5>Sign In</h5>
+                </div>
+                <div class="flex flex-col form__btn">
+                  <button class="form__btn-social form__btn-social--google " data-toggle="modal" a href="#myModal_Student">
+
+                    <div class="col-md-3 col-sm-6">
+                      <div class="our-team">
+                        <h3 class="title">Student</h3>
+
+                      </div>
+                  </div>
+                    <!--<span class="form__caption">Sign in with Teacher</span>-->
+                  </button>
+                  <button class="form__btn-social form__btn-social--apple" data-toggle="modal" a href="#myModal_Teacher" >
+                    <div class="col-md-3 col-sm-6">
+                      <div class="our-team" >
+                        <h3 class="title">Teacher</h3>
+                      </div>
+                  </div>
+                  </button>
+                  <button class="form__btn-social form__btn-social--apple" data-toggle="modal" a href="#myModal_Admin" >
+                    <div class="col-md-3 col-sm-6">
+                      <div class="our-team" >
+                        <h3 class="title">Admin</h3>
+                      </div>
+                  </div>
+                  </button>
+                </div>
+               
+            </div>
+          </div>
+          
+          
+
+            
+          <div id="myModal_Student" class="modal fade">
+            <div class="modal-dialog modal-login">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <div class="avatar">
+                    <img src="img/Student.png" alt="Avatar">
+                  </div>				
+                  <h4 class="modal-title">Student Login</h4>	
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="usernameStudent" placeholder="Username" required="required">		
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" id="passwordStudent" placeholder="Password" required="required">	
+                    </div>        
+                    <div class="form-group">
+                      <button id="login" type="button" onclick="login_Student()" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <a href="#">Forgot Password?</a>
+                </div>
+              </div>
+            </div>
+          </div> 
+          
+          <div id="myModal_Teacher" class="modal fade">
+            <div class="modal-dialog modal-login">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <div class="avatar">
+                    <img src="img/Teacher.png" alt="Avatar">
+                  </div>				
+                  <h4 class="modal-title">Teacher Login</h4>	
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="usernameTeacher" placeholder="Username" required="required">		
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" id="passwordTeacher" placeholder="Password" required="required">	
+                    </div>        
+                    <div class="form-group">
+                      <button id="login" type="button" onclick="login_Teacher()" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+                    </div>                
+                </div>
+                <div class="modal-footer">
+                  <a href="#">Forgot Password?</a>
+                </div>
+              </div>
+            </div>
+          </div> 
+          
+          <div id="myModal_Admin" class="modal fade">
+            <div class="modal-dialog modal-login">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <div class="avatar">
+                    <img src="img/Admin.png" alt="Avatar">
+                  </div>				
+                  <h4 class="modal-title">Admin Login</h4>	
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="usernameAdmin" placeholder="Username" required="required">		
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" id="passwordAdmin" placeholder="Password" required="required">	
+                    </div>        
+                    <div class="form-group">
+                      <button id="login" type="button" onclick="login_Admin()" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <a href="#">Forgot Password?</a>
+                </div>
+              </div>
+            </div>
+          </div> 
+
+          <script>
+            function login_Student() {
+          if ($("#usernameStudent").val() == "Shing" && $("#passwordStudent").val() == "pw") {
+            alert("You are a valid user");
+            window.location.href = "Student.html";
+          } else {
+            alert("You are not a valid user");
+          }
+        }
+        function login_Teacher() {
+          if ($("#usernameTeacher").val() == "Lun" && $("#passwordTeacher").val() == "pw") {
+            alert("You are a valid user");
+            window.location.href = "Teacher.html";
+          } else {
+            alert("You are not a valid user");
+          }
+        }
+        function login_Admin() {
+          if ($("#usernameAdmin").val() == "Admin" && $("#passwordAdmin").val() == "pw") {
+            alert("You are a valid user");
+            window.location.href = "SchoolAdminViewInformation.html";
+          } else {
+            alert("You are not a valid user");
+          }
+        }
+      </script>
+
+
+</body>
+</html>
